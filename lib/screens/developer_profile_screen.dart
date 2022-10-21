@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/widgets/tag.dart';
+import 'package:collection/collection.dart';
 
 class DeveloperProfileScreen extends StatefulWidget {
   String userName;
   String userBio;
+  List<String> userSpecialities;
 
-  DeveloperProfileScreen(this.userName, this.userBio, {Key? key})
+  DeveloperProfileScreen(this.userName, this.userBio, this.userSpecialities,
+      {Key? key})
       : super(key: key);
 
   @override
@@ -75,8 +79,7 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
               ],
             ),
           ),
-        )
-    );
+        ));
 
     final detailProfileInfo = Container(
         width: double.infinity,
@@ -88,23 +91,39 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "About",
+                  "Experience",
                   style: TextStyle(
                       color: Colors.black45,
                       fontSize: 24,
                       fontWeight: FontWeight.w400),
                 ),
                 Padding(padding: EdgeInsets.only(bottom: 10.0)),
-                Text(super.widget.userBio)
+                Container(
+                  width: 540,
+                  height: 120,
+                  child: Wrap(
+                    children: [
+                      Tag(),
+                      Tag(),
+                      Tag(),
+                      Tag(),
+                      Tag(),
+                      Tag(),
+                      Tag(),
+                      Tag(),
+                      Tag(),
+                      Tag()
+                    ],
+                  ),
+                )
               ],
             ),
           ),
-        )
-    );
+        ));
 
     final developerProfileScreenState = Container(
       child: Column(
-        children: [mainProfileInfo, detailProfileInfo, aboutProfileInfo],
+        children: [mainProfileInfo, aboutProfileInfo, detailProfileInfo],
       ),
     );
     return developerProfileScreenState;
