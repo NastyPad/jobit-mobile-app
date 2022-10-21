@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/widgets/tag.dart';
 import 'screens/developer_profile_screen.dart';
+import 'screens/job_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.amber,
             title: Text("JoBit"),
           ),
-          body: DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
+          body: JobDetailsScreen("Frontend Developer") //DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
       ),
     );
   }

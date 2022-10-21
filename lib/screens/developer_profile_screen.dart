@@ -32,6 +32,7 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
 
     Widget cardMainInfo() {
       final userPhoto = Container(
+        margin: EdgeInsets.only(top: 35),
         width: 140.0,
         height: 140.0,
         decoration: BoxDecoration(
@@ -66,15 +67,34 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
         ],
       );
 
+      String sample =
+          "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29kZSUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80";
+
       final _cardMainInfo = Container(
         child: Card(
           child: Column(
             children: [
-              userPhoto,
+              Stack(
+                alignment: Alignment.topCenter,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 120,
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8.0),
+                          topRight: Radius.circular(8.0)),
+                      child:
+                          Image(fit: BoxFit.cover, image: NetworkImage(sample)),
+                    ),
+                  ),
+                  userPhoto
+                ],
+              ),
               userProfileTitle,
-              Padding(padding: EdgeInsets.only(top: 5.0, bottom: 5.0)),
+              const Padding(padding: EdgeInsets.only(top: 5.0, bottom: 5.0)),
               userProfileExtra,
-              Padding(padding: EdgeInsets.only(top: 5.0, bottom: 5.0))
+              const Padding(padding: EdgeInsets.only(top: 5.0, bottom: 5.0))
             ],
           ),
         ),
@@ -148,7 +168,6 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
     }
 
     Widget cardEducationInfo() {
-
       String univerisityName = "Universidad Peruana de Ciencias Aplicadas";
       String carrer = "Software Engineer";
       String date = "jun. 2019 - jun. 2024";
