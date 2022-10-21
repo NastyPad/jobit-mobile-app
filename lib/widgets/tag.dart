@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Tag extends StatefulWidget {
-  const Tag({Key? key}) : super(key: key);
+  String tagName;
+  Tag(this.tagName, {Key? key}) : super(key: key);
 
   @override
   State<Tag> createState() => _TagState();
@@ -14,9 +15,9 @@ class _TagState extends State<Tag> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text("Software Dev"),
+          Text(super.widget.tagName, style: TextStyle(color: Colors.black45, fontSize: 12)),
           Padding(padding: EdgeInsets.only(right: 5.0)),
-          Icon(Icons.sell)
+          Icon(Icons.sell, color: Colors.black45, size: 12,)
         ],
       ),
       padding: EdgeInsets.all(6),
