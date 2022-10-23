@@ -8,20 +8,23 @@ class JobDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _jobDetail = Row(
-      children: [
-        Icon(
-          icon,
-          color: Colors.blueGrey,
-          size: 20,
-        ),
-        Padding(padding: EdgeInsets.all(4)),
-        Text(workingDayModality,
-            style: const TextStyle(
-                color: Colors.blueGrey,
-                fontWeight: FontWeight.w300,
-                fontSize: 12))
-      ],
+    final _jobDetail = Container(
+      margin: EdgeInsets.only(bottom: 5),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            color: Colors.grey,
+            size: 20,
+          ),
+          Padding(padding: EdgeInsets.all(4)),
+          Text(workingDayModality,
+              style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 12))
+        ],
+      ),
     );
 
     return _jobDetail;
