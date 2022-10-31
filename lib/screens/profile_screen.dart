@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'navigation_drawer.dart';
+import 'package:jobit_mobile_app/widgets/navigation_drawer.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 

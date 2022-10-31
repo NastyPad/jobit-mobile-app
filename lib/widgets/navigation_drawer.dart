@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:login_jobit/home_page.dart';
-import 'package:login_jobit/messages_page.dart';
-import 'package:login_jobit/notifications_page.dart';
-import 'package:login_jobit/premium_page.dart';
-import 'package:login_jobit/profile_page.dart';
+import 'package:jobit_mobile_app/screens/home_screen.dart';
+import 'package:jobit_mobile_app/screens/messages_screen.dart';
+import 'package:jobit_mobile_app/screens/notifications_screen.dart';
+import 'package:jobit_mobile_app/screens/premium_screen.dart';
+import 'package:jobit_mobile_app/screens/profile_screen.dart';
 
 class NavigationDrawer extends StatelessWidget {
   const NavigationDrawer({Key? key}) : super(key: key);
@@ -36,7 +36,7 @@ class NavigationDrawer extends StatelessWidget {
               ),)
         ),
         onTap: ()=> Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context)=>const HomePage(),
+          builder: (context)=>const HomeScreen(),
         ),
         ),
       ),
