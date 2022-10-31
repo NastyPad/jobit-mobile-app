@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/screens/plan_details_screen.dart';
+import 'package:jobit_mobile_app/screens/select_emplyer_screen.dart';
 import 'package:jobit_mobile_app/widgets/tag.dart';
 import 'screens/developer_profile_screen.dart';
 import 'screens/job_details_screen.dart';
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
             title: Text("JoBit"),
           ),
           body:
-        plan_details_screen()
+          EscogerPostulanteView()
       ),
     );
   }
