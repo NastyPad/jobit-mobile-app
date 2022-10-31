@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jobit_mobile_app/widgets/tag.dart';
-import 'screens/developer_profile_screen.dart';
-import 'screens/job_details_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,36 +7,83 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    String userName = "Leonardo Manuel Grau Vargas";
-    String userBio =
-        "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.";
-    List<String> userSpecialities = ["Mobile Developer","UX Designer"];
-    String userPhoto = "https://media-exp1.licdn.com/dms/image/C4E03AQEaCD0tXb9irA/profile-displayphoto-shrink_800_800/0/1659332141355?e=1671667200&v=beta&t=jK6mukdv-183ti6ZgalC2vi_5nZc75QwyoQc8ESMKXQ";
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.amber,
-            title: Text("JoBit"),
-          ),
-          body: JobDetailsScreen("Frontend Developer") //DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
+      home: AdsJob(),
+    );
+  }
+}
+
+//PROGRAM
+class AdsJob extends StatefulWidget {
+  @override
+  State<AdsJob> createState() => _AdsJobState();
+}
+
+class _AdsJobState extends State<AdsJob> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        leading: IconButton(icon: Icon(Icons.menu), onPressed: _menu),
+        title: Text("JoBit"),
       ),
+      body: Column(
+          children: <Widget>[
+            Center(
+                child: CardContainer()
+            )
+          ]
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){
+
+        },
+      ),
+    );
+  }
+
+  void _menu(){
+
+  }
+}
+
+
+//WIDGET TITLE ADS
+class CardContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(30),
+      child: Text(
+          'MY ADS',
+        style: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+          color: Colors.amberAccent
+        ),
+      ),
+      padding: EdgeInsets.only(top: 10, right: 80, left: 80, bottom: 10),
+
+      decoration: BoxDecoration(
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Colors.black54,
+              blurRadius: 7.0,
+              offset: Offset(0.0, 4)
+          )
+        ],
+
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30.0)
+      )
     );
   }
 }

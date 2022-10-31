@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.jobit_mobile_app">
+    package="com.example.prueba1">
    <application
-        android:label="jobit_mobile_app"
+        android:label="prueba1"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
