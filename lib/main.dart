@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen.dart';
 import 'screens/job_details_screen.dart';
+import 'screens/enterprise_profile.dart';
+import 'screens/find_postulant.dart';
 
 import 'models/user_model.dart';
 import 'services/user_service.dart';
@@ -34,10 +36,12 @@ class MyApp extends StatelessWidget {
 
     String userBio =
         "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.";
-    List<String> userSpecialities = ["Mobile Developer","UX Designer"];
-    String userPhoto = "https://media-exp1.licdn.com/dms/image/C4E03AQEaCD0tXb9irA/profile-displayphoto-shrink_800_800/0/1659332141355?e=1671667200&v=beta&t=jK6mukdv-183ti6ZgalC2vi_5nZc75QwyoQc8ESMKXQ";
+    List<String> userSpecialities = ["Mobile Developer", "UX Designer"];
+    String userPhoto =
+        "https://media-exp1.licdn.com/dms/image/C4E03AQEaCD0tXb9irA/profile-displayphoto-shrink_800_800/0/1659332141355?e=1671667200&v=beta&t=jK6mukdv-183ti6ZgalC2vi_5nZc75QwyoQc8ESMKXQ";
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -57,9 +61,14 @@ class MyApp extends StatelessWidget {
             title: Text("JoBit"),
           ),
           body:
+<<<<<<< HEAD
           DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
         //JobDetailsScreen("Frontend Developer") DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
       ),
+=======
+              find_postulant() //DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
+          ),
+>>>>>>> bc169fe2e275efd17d951d72a24add34207c786b
     );
   }
 }
