@@ -1,19 +1,37 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:jobit_mobile_app/widgets/tag.dart';
-import 'screens/developer_profile_screen.dart';
+import 'package:jobit_mobile_app/screens/developer_profile_screen.dart';
 import 'screens/job_details_screen.dart';
 
+import 'models/user_model.dart';
+import 'services/user_service.dart';
+import 'dart:developer';
+
+
+class MyHttpOverrides extends HttpOverrides{
+  @override
+  HttpClient createHttpClient(SecurityContext? context){
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+  }
+}
+
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    String userName = "Leonardo Manuel Grau Vargas";
+
+    //UserAgentClient userAgentClient = UserAgentClient();
+    //userAgentClient.getUserById(0); //user = User(value.userId, value.username, value.firstName, value.lastName)
+
     String userBio =
         "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.";
     List<String> userSpecialities = ["Mobile Developer","UX Designer"];
@@ -38,7 +56,9 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.amber,
             title: Text("JoBit"),
           ),
-          body: JobDetailsScreen("Frontend Developer") //DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
+          body:
+          DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
+        //JobDetailsScreen("Frontend Developer") DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
       ),
     );
   }

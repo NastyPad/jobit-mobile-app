@@ -1,16 +1,18 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/widgets/tag.dart';
 import 'package:jobit_mobile_app/widgets/education_item.dart';
-import 'package:collection/collection.dart';
+import 'package:jobit_mobile_app/models/user_model.dart';
+import "package:jobit_mobile_app/services/user_service.dart";
+import "package:http/http.dart" as http;
 
 class DeveloperProfileScreen extends StatefulWidget {
-  String userName;
   String userBio;
   String userPhoto;
   List<String> userSpecialities;
 
-  DeveloperProfileScreen(
-      this.userName, this.userBio, this.userSpecialities, this.userPhoto,
+  DeveloperProfileScreen(this.userBio, this.userSpecialities, this.userPhoto,
       {Key? key})
       : super(key: key);
 
@@ -19,6 +21,15 @@ class DeveloperProfileScreen extends StatefulWidget {
 }
 
 class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
+  UserAgentClient userAgentClient = UserAgentClient();
+  late Future<User> developer;
+
+  @override
+  void initState() {
+    developer = userAgentClient.getUserById(0);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final userPhoto = Container(
@@ -44,14 +55,19 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
 
       final userProfileTitle = Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
           SizedBox(
-            width: 280,
-            child: Text(
-              widget.userName,
-              style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
-            ),
-          ),
+              child: FutureBuilder<User>(
+                future: developer,
+                builder: (context, snap) {
+                  if (snap.hasData) {
+                    return Text("${snap.data!.firstName} ${snap.data!.lastName}", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20));
+                  }
+                  return Text("Error");
+                },
+              )),
+          Padding(padding: EdgeInsets.all(5)),
           const Icon(Icons.verified, color: Colors.blueAccent)
         ],
       );
