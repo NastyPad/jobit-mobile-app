@@ -10,7 +10,6 @@ import 'models/user_model.dart';
 import 'services/user_service.dart';
 import 'dart:developer';
 
-
 class MyHttpOverrides extends HttpOverrides{
   @override
   HttpClient createHttpClient(SecurityContext? context){
@@ -61,8 +60,9 @@ class MyApp extends StatelessWidget {
             title: Text("JoBit"),
           ),
           body:
-          DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
-        //JobDetailsScreen("Frontend Developer") DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
+          //DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
+          //JobDetailsScreen("Frontend Developer")
+
       ),
     );
   }
