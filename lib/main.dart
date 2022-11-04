@@ -61,14 +61,9 @@ class MyApp extends StatelessWidget {
             title: Text("JoBit"),
           ),
           body:
-<<<<<<< HEAD
           DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
         //JobDetailsScreen("Frontend Developer") DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
       ),
-=======
-              find_postulant() //DeveloperProfileScreen(userName, userBio, userSpecialities, userPhoto)
-          ),
->>>>>>> bc169fe2e275efd17d951d72a24add34207c786b
     );
   }
 }

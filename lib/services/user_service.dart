@@ -12,7 +12,7 @@ class UserAgentClient {
 
   Future<User> getUserById(int userId) async {
     var source = Uri.https(baseUrl, "$path/$userId");
-
+    debugPrint(source.toString());
     final response = await http.get(source);
     final jsonData = jsonDecode(response.body);
     final User userFound =  User(
@@ -21,7 +21,6 @@ class UserAgentClient {
         jsonData['firstname'],
         jsonData['lastname']
     );
-
     return userFound;
   }
 
