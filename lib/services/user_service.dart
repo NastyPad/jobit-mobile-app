@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -7,7 +8,9 @@ import '../models/user_model.dart';
 
 class UserAgentClient {
 
-  String baseUrl = '10.0.2.2:7244';
+  String ipAddressPhone = "10.0.2.2";
+  String ipAddressWeb = "127.0.0.1:7244";
+  String baseUrl = "127.0.0.1:7244";
   String path = "api/v1/users";
 
   Future<User> getUserById(int userId) async {

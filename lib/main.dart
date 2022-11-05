@@ -1,35 +1,29 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen.dart';
-import 'screens/job_details_screen.dart';
-import 'screens/enterprise_profile.dart';
-import 'screens/find_postulant.dart';
 
-import 'models/user_model.dart';
-import 'services/user_service.dart';
-import 'dart:developer';
-
-class MyHttpOverrides extends HttpOverrides{
+class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext? context){
+  HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
-      ..badCertificateCallback = (X509Certificate cert, String host, int port)=> true;
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
+
+  debugPrint("Hola");
   runApp(const MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     //UserAgentClient userAgentClient = UserAgentClient();
     //userAgentClient.getUserById(0); //user = User(value.userId, value.username, value.firstName, value.lastName)
 
@@ -59,11 +53,11 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.amber,
             title: Text("JoBit"),
           ),
-          body:
+          body: DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
           //DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
           //JobDetailsScreen("Frontend Developer")
 
-      ),
+          ),
     );
   }
 }
