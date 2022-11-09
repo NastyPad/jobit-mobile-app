@@ -9,11 +9,11 @@ import '../models/user_model.dart';
 class UserAgentClient {
 
   String ipAddressPhone = "10.0.2.2";
-  String ipAddressWeb = "127.0.0.1:7244";
-  String baseUrl = "127.0.0.1:7244";
+  String ipAddressWeb = "127.0.0.1";
   String path = "api/v1/users";
 
   Future<User> getUserById(int userId) async {
+    String baseUrl = "$ipAddressPhone:7244";
     var source = Uri.https(baseUrl, "$path/$userId");
     debugPrint(source.toString());
     final response = await http.get(source);

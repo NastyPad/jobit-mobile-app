@@ -1,10 +1,10 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/widgets/tag.dart';
 import 'package:jobit_mobile_app/widgets/education_item.dart';
-import 'package:jobit_mobile_app/models/user_model.dart';
-import "package:jobit_mobile_app/services/user_service.dart";
+import 'package:jobit_mobile_app/models/user_profile_model.dart';
+import 'package:jobit_mobile_app/services/user_profile_service.dart';
+import 'package:jobit_mobile_app/widgets/techskills/user_tech_skill_item.dart';
+
 import "package:http/http.dart" as http;
 
 class DeveloperProfileScreen extends StatefulWidget {
@@ -21,55 +21,48 @@ class DeveloperProfileScreen extends StatefulWidget {
 }
 
 class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
-  UserAgentClient userAgentClient = UserAgentClient();
-  late Future<User> developer;
+  UserProfileAgentClient userProfileAgentClient = UserProfileAgentClient();
+
+  //Text Styles
+  static const cardTitleStyle = TextStyle(
+      color: Colors.black54, fontWeight: FontWeight.w600, fontSize: 18);
+  static const userNameTitleStyle =
+      TextStyle(fontWeight: FontWeight.w500, fontSize: 20);
+
+  late Future<UserProfile> currentUserProfile;
 
   @override
   void initState() {
-    developer = userAgentClient.getUserById(0);
+    currentUserProfile = userProfileAgentClient.getUserProfileByUserId(1);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final userPhoto = Container(
-      width: 140.0,
-      height: 140.0,
-      decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          image: DecorationImage(
-              image: NetworkImage(super.widget.userPhoto), fit: BoxFit.cover)),
-    );
-
-    Widget cardMainInfo() {
+    Widget cardMainInfo(UserProfile currentUserProfile) {
       final userPhoto = Container(
-        margin: EdgeInsets.only(top: 35),
+        margin: const EdgeInsets.only(top: 35),
         width: 140.0,
         height: 140.0,
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-                image: NetworkImage(super.widget.userPhoto),
+                image: NetworkImage(currentUserProfile.profilePhotoUrl),
                 fit: BoxFit.cover)),
       );
 
-      final userProfileTitle = Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          SizedBox(
-              child: FutureBuilder<User>(
-                future: developer,
-                builder: (context, snap) {
-                  if (snap.hasData) {
-                    return Text("${snap.data!.firstName} ${snap.data!.lastName}", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20));
-                  }
-                  return Text("Error");
-                },
-              )),
-          Padding(padding: EdgeInsets.all(5)),
-          const Icon(Icons.verified, color: Colors.blueAccent)
-        ],
+      final userProfileTitle = SizedBox(
+        width: double.maxFinite,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+                "${currentUserProfile.firstname} ${currentUserProfile.lastname}",
+                style: userNameTitleStyle),
+            const Padding(padding: EdgeInsets.all(5)),
+            const Icon(Icons.verified, color: Colors.blueAccent)
+          ],
+        ),
       );
 
       final userProfileExtra = Column(
@@ -86,64 +79,58 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
       String sample =
           "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29kZSUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80";
 
-      final _cardMainInfo = Container(
-        child: Card(
-          child: Column(
-            children: [
-              Stack(
-                alignment: Alignment.topCenter,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 120,
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(8.0),
-                          topRight: Radius.circular(8.0)),
-                      child:
-                          Image(fit: BoxFit.cover, image: NetworkImage(sample)),
-                    ),
+      final cardMainInfo = Card(
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  height: 120,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(8.0),
+                        topRight: Radius.circular(8.0)),
+                    child:
+                        Image(fit: BoxFit.cover, image: NetworkImage(sample)),
                   ),
-                  userPhoto
-                ],
+                ),
+                userPhoto
+              ],
+            ),
+            userProfileTitle,
+            const Padding(padding: EdgeInsets.only(top: 5.0, bottom: 5.0)),
+            userProfileExtra,
+            const Padding(padding: EdgeInsets.only(top: 5.0, bottom: 5.0))
+          ],
+        ),
+      );
+      return cardMainInfo;
+    }
+
+    Widget cardAboutInfo(UserProfile currentUserProfile) {
+      final cardAboutInfo = Card(
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "About",
+                style: cardTitleStyle,
               ),
-              userProfileTitle,
-              const Padding(padding: EdgeInsets.only(top: 5.0, bottom: 5.0)),
-              userProfileExtra,
-              const Padding(padding: EdgeInsets.only(top: 5.0, bottom: 5.0))
+              const Padding(padding: EdgeInsets.all(5)),
+              Text(currentUserProfile.description)
             ],
           ),
         ),
       );
-      return _cardMainInfo;
+      return cardAboutInfo;
     }
 
-    Widget cardAboutInfo() {
-      final _cardAboutInfo = Container(
-        child: Card(
-          child: Container(
-            padding: EdgeInsets.all(10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "About",
-                  style: TextStyle(
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18),
-                ),
-                const Padding(padding: EdgeInsets.all(5)),
-                Text(widget.userBio)
-              ],
-            ),
-          ),
-        ),
-      );
-      return _cardAboutInfo;
-    }
-
-    Widget cardDetailsInfo() {
+    Widget cardTagsInfo() {
       final userTags = Wrap(
         spacing: 3,
         runSpacing: 6,
@@ -160,7 +147,7 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
         ],
       );
 
-      final _cardDetailInfo = Container(
+      final cardDetailInfo = SizedBox(
         width: double.infinity,
         child: Card(
           child: Container(
@@ -168,7 +155,7 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text("Details",
+                const Text("Tags",
                     style: TextStyle(
                         color: Colors.black54,
                         fontWeight: FontWeight.w600,
@@ -180,7 +167,7 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
           ),
         ),
       );
-      return _cardDetailInfo;
+      return cardDetailInfo;
     }
 
     Widget cardEducationInfo() {
@@ -188,7 +175,7 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
       String carrer = "Software Engineer";
       String date = "jun. 2019 - jun. 2024";
 
-      final _cardEducationInfo = Container(
+      final cardEducationInfo = SizedBox(
         width: double.infinity,
         child: Card(
           child: Container(
@@ -217,18 +204,57 @@ class _DeveloperProfileScreenState extends State<DeveloperProfileScreen> {
           ),
         ),
       );
-      return _cardEducationInfo;
+      return cardEducationInfo;
     }
 
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          cardMainInfo(),
-          cardAboutInfo(),
-          cardDetailsInfo(),
-          cardEducationInfo()
-        ],
-      ),
-    );
+    Widget cardTechSkills(UserProfile currentUserProfile) {
+      List<Widget> skills = [];
+      for (var userTechSkill in currentUserProfile.userTechSkills) {
+        skills.add(UserTechSkillItem(userTechSkill));
+      }
+
+      final cardTechSkill = Card(
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          width: double.maxFinite,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Column",
+                style: cardTitleStyle,
+              ),
+              Column(
+                children: skills,
+              ),
+            ],
+          ),
+        ),
+      );
+
+      return cardTechSkill;
+    }
+
+    final all = SingleChildScrollView(
+        child: FutureBuilder(
+          future: currentUserProfile,
+          builder: (context, snap) {
+            if (snap.hasData) {
+              var userProfile = snap.data!;
+              return Column(
+                children: [
+                  cardMainInfo(userProfile),
+                  cardAboutInfo(userProfile),
+                  cardTechSkills(userProfile),
+                  cardTagsInfo(),
+                  cardEducationInfo()
+            ],
+          );
+        }
+        return const CircularProgressIndicator(strokeWidth: 60);
+      },
+    ));
+
+    return all;
   }
 }
