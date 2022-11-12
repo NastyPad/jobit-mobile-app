@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/screens/developer_profile_screen_send.dart';
 
 class find_postulant extends StatelessWidget {
-  List data = [
-    {'nombre': 'Dyland Saldana '},
-    {'nombre': 'Steven Saldana '},
-    {'nombre': 'Alyson Saldana '},
-    {'nombre': 'Dyland Saldana '},
-    {'nombre': 'Dyland Saldana '},
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,124 +19,84 @@ class _MyCustomState extends State<MyCustomForm> {
   List searchTerms = [
     {
       'name': 'Dyland Saldana 1',
-      'description': 'Frontend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Steven Saldana',
-      'description': 'Frontend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Alyson Saldana',
-      'description': 'Frontend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Dyland Saldana 2',
-      'description': 'Frontend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Dyland Saldana 3',
-      'description': 'Frontend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'Dyland Saldana 3',
-      'description': 'Frontend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'Luigi Saldana 3',
-      'description': 'Frontend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Luigi Saldana 3',
-      'description': 'Frontend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Luigi Saldana 3',
-      'description': 'Frontend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Luigi Saldana 3',
-      'description': 'Frontend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Dyland Saldana 1',
-      'description': 'Backend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
     },
     {
       'name': 'Steven Saldana',
-      'description': 'Backend',
+      'userSpecialities': ['Frontend', 'HTML'],
+      'about':
+          "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
           'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'Alyson Saldana',
-      'description': 'Backend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'dyland Saldana 2',
-      'description': 'Backend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'land Saldana 3',
-      'description': 'Backend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'land Saldana 3',
-      'description': 'Backend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'land Saldana 3',
-      'description': 'Backend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'land Saldana 3',
-      'description': 'Backend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'land Saldana 3',
-      'description': 'Backend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
-    {
-      'name': 'land Saldana 3',
-      'description': 'Backend',
-      'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
-    },
+    }
   ];
   List Result = [];
   @override
@@ -172,13 +125,36 @@ class _MyCustomState extends State<MyCustomForm> {
               child: ListView(
             children: [
               for (var i in Result)
-                ListTile(
-                  title: Text(i['name']),
-                  subtitle: Text(i['description']),
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(i['avatar']),
+                Card(
+                  child: ListTile(
+                    title: Text(i['name']),
+                    subtitle: Row(
+                      children: [
+                        for (var j in i['userSpecialities'])
+                          Text(j.toString() + ' '),
+                      ],
+                    ),
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(i['avatar']),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.arrow_forward),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                //AQUI VA EL PERFIL DEL POSTULANTE
+                                builder: (context) => newPage(
+                                    i['name'],
+                                    i['userSpecialities'],
+                                    i['avatar'],
+                                    i['about'])
+                                    )
+                            //
+                            );
+                      },
+                    ),
                   ),
-                  trailing:Icon(Icons.arrow_forward,)
                 ),
             ],
           ))
@@ -191,12 +167,41 @@ class _MyCustomState extends State<MyCustomForm> {
       if (element['name'].toLowerCase().contains(busqueda.toLowerCase())) {
         Result.add(element);
       }
-      if (element['description'].toLowerCase().contains(busqueda.toLowerCase())) {
+      if (element['userSpecialities']
+          .toLowerCase()
+          .contains(busqueda.toLowerCase())) {
         Result.add(element);
       }
     }
     setState(() {
       Result = Result;
     });
+  }
+}
+
+class newPage extends StatefulWidget {
+  String name;
+  String userPhoto;
+  List<String> userSpecialities;
+  String about;
+
+  newPage(this.name, this.userSpecialities, this.userPhoto, this.about);
+
+  @override
+  State<newPage> createState() => _newPageState();
+}
+
+class _newPageState extends State<newPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Postulante ' + widget.name),
+          backgroundColor: Color.fromARGB(255, 255, 191, 0),
+        ),
+        body: DeveloperProfileScreenSend(widget.about, widget.userSpecialities, widget.userPhoto)
+
+        // DeveloperProfileScreenSend(i['name'], i['userSpecialities'], i['avatar']) ,
+        );
   }
 }

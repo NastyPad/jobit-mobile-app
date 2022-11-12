@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen.dart';
 import 'package:jobit_mobile_app/screens/find_postulant.dart';
+import 'package:jobit_mobile_app/screens/developer_profile_screen_send.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -55,8 +56,9 @@ class MyApp extends StatelessWidget {
             title: Text("JoBit"),
           ),
           body:
+          //  DeveloperProfileScreenSend(userBio, userSpecialities, userPhoto)
           find_postulant()
-          //  DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
+          // DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
           //DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
           //JobDetailsScreen("Frontend Developer")
 
