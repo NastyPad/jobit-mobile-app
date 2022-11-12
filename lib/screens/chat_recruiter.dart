@@ -30,7 +30,7 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                         height: 140.0,
                         child: ElevatedButton(
                           style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white) ),
-                          onPressed: () { actual=names[index];},
+                          onPressed: () { actual=names[index];setState(() {actual=names[index];});},
                           child: Container(
                                   width: 100,
                                   height: 140,
@@ -67,31 +67,170 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                           fontWeight: FontWeight.bold,fontSize: 18))
               )
             ),
-            SizedBox(
+            Expanded(child: ListView.builder(scrollDirection: Axis.vertical, shrinkWrap:true ,
+                itemCount:1, itemBuilder: (BuildContext context, int position) {
+                  return Column(
+                      children:[
+                        Row(
+                            children:[
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width*2/4-20,
+                              ),
+                              SizedBox(
+                                  width: MediaQuery.of(context).size.width*2/4-20,
+                                  child:  Card(
+                                      child: Container(
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                Colors.yellow,
+                                                Colors.orange.shade800
+                                              ],
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                            ),
+                                          ),
+                                          child:  Padding(
+                                              padding: EdgeInsets.all(7),
+                                              child: Text('Hello, we are very happy to have you as a candidate and we want to continue the selection process with you.',
+                                                textAlign: TextAlign.left, style: TextStyle(fontWeight: FontWeight.bold ,color: Colors.white),))
+                                      )
+                                  )
+                              )]
+                        ),
+                        Row(
+                            children:[
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width*2/4-20,
+                                child:   Container(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Colors.yellow,
+                                        Colors.orange.shade800
+                                      ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                    ),
+                                  ),
+                                  child:Card(
+                                    elevation: 0,
+                                    color:Colors.white,
+                                    child: Padding(
+                                        padding: EdgeInsets.all(7),
+                                        child: Text('Hello, thanks for this opportunity, what is the next phase about?',textAlign: TextAlign.left,style: TextStyle(fontWeight: FontWeight.bold))
+                                    ), //declare your widget here
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width*2/4-20,
+                              )
+                            ]
+                        )
+                      ]
+                  );
+                }
+            )),
+          /*  SizedBox(
                 height: MediaQuery.of(context).size.height-(366),
                 child: ListView.builder(scrollDirection: Axis.vertical, shrinkWrap:true ,
-                    itemCount:2, itemBuilder: (BuildContext context, int position) {
-                      return Row(
+                    itemCount:20, itemBuilder: (BuildContext context, int position) {
+                      return Column(
                         children:[
-                          SizedBox(
+
+                          Row(
+                              children:[
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width*2/4-20,
+                                ),
+                                SizedBox(
+                                    width: MediaQuery.of(context).size.width*2/4-20,
+                                    child:  Card(
+                                      child: Container(
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Colors.yellow,
+                                            Colors.orange.shade800
+                                          ],
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                        ),
+                                      ),
+                                      child:  Padding(
+                                            padding: EdgeInsets.all(7),
+                                            child: Text('Hello',textAlign: TextAlign.right, style: TextStyle(fontWeight: FontWeight.bold ,color: Colors.white),))
+                      )
+                                )
+                                )]
+                          ),
+                          Row(
+                            children:[
+                            SizedBox(
                             width: MediaQuery.of(context).size.width*2/4-20,
-                            child:  Card(
+                            child:   Container(
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.yellow,
+                                    Colors.orangeAccent,
+                                    Colors.yellow.shade300,
+                                  ],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                              ),
+                              child:Card(
+                                elevation: 0,
+                                color:Colors.white,
                                 child: Padding(
-                                    padding: EdgeInsets.all(7),
-                                    child: Text('Hello',textAlign: TextAlign.left)))
+                                  padding: EdgeInsets.all(7),
+                                  child: Text('Hello',textAlign: TextAlign.left,style: TextStyle(fontWeight: FontWeight.bold))
+                                  ), //declare your widget here
+                              ),
+                            ),
+                            ),
+                            SizedBox(
+                            width: MediaQuery.of(context).size.width*2/4-20,
+                            )
+                            ]
                           )
                         ]
                       );
                     }
                 )
-            ),
-            TextField( decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Send a message',
-            ),)
-            ]
-        ),
+            ),*/
+            //Spacer(),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: TextField( decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Send a message',
+                    )),
+                  )
+                  ,
+                  TextButton(
+                    child: Icon(Icons.send, color: Colors.black54),
+                    onPressed: () {
+                      //enviar primer mensaje
 
-    );
+                    },
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0),
+                            )
+                        ),
+                       ),
+                  )
+                ]
+            )
+
+    ]));
+
+
   }
 }

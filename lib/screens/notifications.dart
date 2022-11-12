@@ -9,49 +9,56 @@ class Notifications extends StatefulWidget {
 
 class _NotificationsState extends State<Notifications> {
 
+  List<Notification> notifications=[];
+
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(child:Container(
-      padding: EdgeInsets.all(20),
-      child: Column(
-          children: [
-            SizedBox(
-                height: 100*10,
-                child: ListView.builder(scrollDirection: Axis.vertical, shrinkWrap:true ,
-                    itemCount:10, itemBuilder: (BuildContext context, int position) {
-                      return  getListTile('Tu anuncio recibió un nuevo postulante',
-                          'Programador de aplicaciones móviles','Ver');
-                    }
-                )
-            ),
-          ]
-      ))
+    return SingleChildScrollView(
+        child:Container(
+          padding: EdgeInsets.all(20),
+          child:Expanded(
+                    child: ListView.builder(scrollDirection: Axis.vertical, shrinkWrap:true ,
+                        itemCount:10, itemBuilder: (BuildContext context, int position) {
+                          return  getListTile('Tu anuncio "desarrollador back end" recibió un nuevo postulante',
+                              'Jose Díaz está interesado en el puesto','Ver detalles');
+                        }
+                    )
+                )),
+
+
     );
   }
 
-  SizedBox getListTile(title,subtitle,textbutton){
-    return SizedBox(
-        height:100,
-        child:Column(children:<Widget> [
-          Material(
-            elevation: 8,
-            borderRadius: BorderRadius.circular(18.0),
-            shadowColor: Colors.black26,
-            child:
-            ListTile(
+  Card getListTile(title,subtitle,textbutton){
+    return Card(
+        elevation:8,
+        shadowColor: Colors.black26,
+        child: Container(
+          padding: EdgeInsets.all(18),
+          child: Column(
 
-              title:
-              Text(title,
-                style: TextStyle(color: Colors.amber,
-                    fontWeight: FontWeight.bold),),
-              subtitle: Row(
-                children: <Widget>[
-
-                  Text(subtitle),
-
-                  Spacer(),
-
-                  ElevatedButton(
+            children: [
+              SizedBox(
+              width: MediaQuery.of(context).size.width-40,
+              child: Text(
+              title,
+              textAlign: TextAlign.left,
+              style: TextStyle(color: Colors.amber,
+              fontWeight: FontWeight.bold,fontSize: 18))
+              ),
+              SizedBox(height: 15),
+              SizedBox(
+              width: MediaQuery.of(context).size.width-40,
+              child: Text(
+             subtitle,
+              textAlign: TextAlign.left,
+              style: TextStyle(color: Colors.black54,
+              fontWeight: FontWeight.normal,fontSize: 15))
+              ),
+              Container(
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: ElevatedButton(
                     onPressed: () {
                       MaterialPageRoute route = MaterialPageRoute(builder: (_) => NotificationsDetails());
                       Navigator.push(context, route);
@@ -64,15 +71,14 @@ class _NotificationsState extends State<Notifications> {
                       textbutton,
                       style: TextStyle(fontSize: 15),
                     ),
-                  )
-                ],
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(height: 15)
-        ],)
 
-    );
+          ]
+    )));
+
   }
+
 
 }

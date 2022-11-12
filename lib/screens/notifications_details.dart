@@ -1,9 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NotificationsDetails extends StatelessWidget {
+import 'chat_recruiter.dart';
+import '../widgets/feedback_dialog.dart';
 
-  NotificationsDetails();
+class NotificationsDetails extends StatefulWidget {
+  @override
+  State<NotificationsDetails> createState() => _NotificationsDetailsState();
+}
+
+class _NotificationsDetailsState extends State<NotificationsDetails> {
+  List<String> names=['Erick Cruz','Renzo García','Sandra Gomez','Alicia Torres'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,18 +29,18 @@ class NotificationsDetails extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width-40,
-                      child: Text(
-                          'Programador de aplicaciones moviles',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.amber,
-                              fontWeight: FontWeight.bold,fontSize: 18))
+                        width: MediaQuery.of(context).size.width-40,
+                        child: Text(
+                            'Programador de aplicaciones moviles',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.amber,
+                                fontWeight: FontWeight.bold,fontSize: 18))
                     ),
                     SizedBox(height: 15),
                     SizedBox(
                         width: MediaQuery.of(context).size.width-40,
                         child: Text(
-                            '  Desarrollador mobile  |   Senior',
+                            '  Desarrollador mobile  |   Senior',  //etiqueta
                             textAlign: TextAlign.left,
                             style: TextStyle(color: Colors.black38,
                                 fontWeight: FontWeight.normal,fontSize: 13))
@@ -41,7 +49,7 @@ class NotificationsDetails extends StatelessWidget {
                     SizedBox(
                         width: MediaQuery.of(context).size.width-40,
                         child: Text(
-                                'Se busca mauris elementum arcu urna, dictum'
+                            'Se busca mauris elementum arcu urna, dictum'
                                 ' malesuada velit efficitur a. Donec blandit, '
                                 'nulla et lobortis lacinia, felis sapien maximus'
                                 ' urna, in malesuada quam est et erat. Donec elit lectus, lacinia et dignissim nec, egestas lacinia lorem. Quisque semper dignissim fermentum. Sed rhoncus mi in mi fringilla, eget dignissim nibh congue. Sed facilisis pulvinar porttitor. ',
@@ -51,12 +59,11 @@ class NotificationsDetails extends StatelessWidget {
                     ),
                     SizedBox(height: 15),
                     SizedBox(
-                        height: 100*10,
                         child: ListView.builder(scrollDirection: Axis.vertical, shrinkWrap:true ,
-                            itemCount:10, itemBuilder: (BuildContext context, int position) {
-                              return getListTilePostulant('Alejandro Pizarro Vargas',
-                                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',context);
-                        }
+                            itemCount:names.length, itemBuilder: (BuildContext context, int position) {
+                              return getListTilePostulant(names[position],
+                                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',context,position);
+                            }
                         )
                     )
                   ],
@@ -68,13 +75,13 @@ class NotificationsDetails extends StatelessWidget {
     );
   }
 
-  SizedBox getListTilePostulant(name,photo,context){
+  SizedBox getListTilePostulant(name,photo,context, i){
     return SizedBox(
       height:100,
       child: ListTile(
           leading: CircleAvatar(
-            radius: 30,
-            backgroundImage: NetworkImage(photo)
+              radius: 30,
+              backgroundImage: NetworkImage(photo)
           ),
           title: SizedBox(
               height: 30,
@@ -82,7 +89,8 @@ class NotificationsDetails extends StatelessWidget {
                   name,
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.amber,
-                      fontWeight: FontWeight.bold,fontSize: 18))
+                      fontWeight: FontWeight.bold,fontSize: 18)
+              )
           ),
           subtitle: Row(
               children:[
@@ -92,7 +100,12 @@ class NotificationsDetails extends StatelessWidget {
                   width: 40.0,
                   child: TextButton(
                     child: Icon(Icons.check, color: Colors.white),
-                    onPressed: () {},
+                    onPressed: () {
+                      //enviar primer mensaje
+                      showDialog(context: context, builder: (BuildContext context){
+                        return FeedbackDialog().buildDialog(context, i,'Envíale un mensaje');
+                      });
+                    },
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -102,7 +115,6 @@ class NotificationsDetails extends StatelessWidget {
                         backgroundColor: MaterialStateProperty.all(Colors.greenAccent)
                     ),
                   ),
-
                 ),
                 Spacer(),
                 SizedBox(
@@ -110,7 +122,14 @@ class NotificationsDetails extends StatelessWidget {
                   width: 40.0,
                   child: TextButton(
                     child: Icon(Icons.close, color: Colors.white),
-                    onPressed: () {},
+                    onPressed: () {
+                      // rechazar recomendacion
+                      showDialog(context: context, builder: (BuildContext context){
+                        return FeedbackDialog().buildDialog(context, i, 'Feedback');
+                      });
+                      names.removeAt(i);
+                      setState(() {});
+                    },
                     style: ButtonStyle(
                         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
@@ -141,5 +160,10 @@ class NotificationsDetails extends StatelessWidget {
       ),
     );
   }
+  Future showData() async{
 
+    setState(() {
+      names = names;
+    });
+  }
 }

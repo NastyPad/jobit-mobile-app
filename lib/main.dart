@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled/screens/chat_recruiter.dart';
+import 'package:untitled/screens/notifications_postulant.dart';
 
 import 'screens/notifications.dart';
 
