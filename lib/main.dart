@@ -61,10 +61,10 @@ class MyApp extends StatelessWidget {
           body:
 
           //  DeveloperProfileScreenSend(userBio, userSpecialities, userPhoto)
-          //find_postulant()
+          find_postulant(),
           // DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
 
-          ChatRecruiter()
+          // ChatRecruiter()
           //  DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
 
           //DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
