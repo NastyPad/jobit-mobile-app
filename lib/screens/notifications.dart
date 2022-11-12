@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/screens/notifications_details.dart';
+import 'notifications_details.dart';
 
 class Notifications extends StatefulWidget {
   @override

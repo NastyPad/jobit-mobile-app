@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled/screens/feedback_screen.dart';
-import 'package:untitled/screens/notifications_details.dart';
+import 'feedback_screen.dart';
+import 'notifications_details.dart';
 
 class NotificationsPostulant extends StatefulWidget {
   @override
