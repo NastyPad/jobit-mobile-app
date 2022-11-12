@@ -20,24 +20,28 @@ class _ButtonTextIconState extends State<ButtonTextIcon> {
     final buttonIcon = ElevatedButton(
         onPressed: () {},
         style: ButtonStyle(
-            padding:
-                MaterialStatePropertyAll(EdgeInsets.only(left: 40, right: 40)),
             shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(17)))),
             backgroundColor: MaterialStatePropertyAll(widget.bgColor),
             foregroundColor: MaterialStatePropertyAll(widget.fgColor)),
-        child: Row(
-          children: [
-            Text(
-              widget.buttonText,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-            ),
-            Padding(padding: EdgeInsets.all(2)),
-            Icon(
-              widget.icon,
-              size: 20,
-            )
-          ],
+        child: Align(
+          alignment: Alignment.center,
+          child: Row(
+            children: [
+              Text(
+                widget.buttonText,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Icon(
+                widget.icon,
+              )
+            ],
+            mainAxisAlignment: MainAxisAlignment.center 
+
+          ),
         ));
 
     return buttonIcon;
@@ -64,8 +68,8 @@ class _ButtonTextIconSimpleState extends State<ButtonTextIconSimple> {
     final buttonIcon = ElevatedButton(
         onPressed: () {},
         style: ButtonStyle(
-          animationDuration: Duration(microseconds: 500),
-          overlayColor: MaterialStatePropertyAll(Colors.amber.shade100),
+            animationDuration: Duration(microseconds: 500),
+            overlayColor: MaterialStatePropertyAll(Colors.amber.shade100),
             elevation: MaterialStatePropertyAll(0),
             padding:
                 MaterialStatePropertyAll(EdgeInsets.only(left: 40, right: 40)),
