@@ -20,7 +20,6 @@ class planPremiun extends StatelessWidget{
                )
              ],
            ),
-           Tex
          ],
 
     );
