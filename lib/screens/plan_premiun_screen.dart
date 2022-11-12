@@ -5,69 +5,194 @@ import 'package:jobit_mobile_app/widgets/subscriptions/plan_item.dart';
 class planPremiun extends StatelessWidget{
 
   @override
-  Widget build(BuildContext){
-    return Column(
-
-      children: [
-           Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: <Widget>[
-               Text(
-                   "Sé un usuario\nPremiun",
-                   style: TextStyle(
+  Widget build(BuildContext context){
+   return Scaffold(
+     drawer: Drawer(),
+     appBar: AppBar(
+       backgroundColor: Colors.amber,
+     ),
+     body: SingleChildScrollView(
+       child: Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+         crossAxisAlignment: CrossAxisAlignment.center,
+         children: [
+           Padding(padding: EdgeInsets.only(top : 50.0, bottom: 10.0),
+           child: Center(
+             child: Text(
+                 "Aún no eres PREMIUN?",
+                 style: TextStyle(
                      color: Colors.amber,
-                     fontSize: 35.0,
-                   )
-               )
-             ],
+                     fontSize: 25.0,
+                     fontWeight: FontWeight.bold
+                 )
+             ),
            ),
-           Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: <Widget>[
-              Image.network("https://cdn1.vectorstock.com/i/1000x1000/98/85/boy-young-programming-icon-cartoon-style-vector-32359885.jpg",
-              width: 180.0,),
-               Text(
-                   "Aparece en las\nprimeras\nposiciones de\n profesionales",
-                   style: TextStyle(
-                     color: Colors.black,
+           ),
+           Center(
+             child: Text(
+                 "Publica anuncios sin limites\n\nRecibe la mayor cantidad de\npostulantes",
+                 style: TextStyle(
+                     color: Colors.grey,
                      fontSize: 20.0,
-                   )
-               )
-             ],
-           ),
-           Row(
-             mainAxisAlignment: MainAxisAlignment.center,
-             children: <Widget>[
-               plan("Plan Mensual", "60 dolares"),
-               Text(
-                   "Sé recomendado a\n empresas de acuerdo a tus\nhabilidades y talento",
-                   style: TextStyle(
-                     color: Colors.black,
-                     fontSize: 20.0,
-                   )
-               )
-             ],
-           ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            ElevatedButton(
-                style: TextButton.styleFrom(
-                    backgroundColor: Colors.amber,
-                ),
-                onPressed:(){
 
-                }, child:
-            Text("ADQUIRIR" ,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25.0,
-                )                ))
-          ],
-        )
-         ],
+                 )
+             ),
+           ),
+           SizedBox(height: 20.0),
+           Center(
+             child: Text(
+                 "Conoce nuestros planes",
+                 style: TextStyle(
+                     color: Colors.amber,
+                     fontSize: 25.0,
+                     fontWeight: FontWeight.bold
+                 )
+             ),
+           ),
+           SizedBox(height:30.0),
+           Padding(padding: EdgeInsets.symmetric(horizontal: 40.0),
+           child:  GridView.count(crossAxisCount: 2,shrinkWrap: true ,crossAxisSpacing: 30.0,mainAxisSpacing: 30.0, children: [
+               Container(
+                 width: 20.0,
+                 color: Colors.red,
+                 child: Column(
+                   children: [
+                     Container(
+                       color: Colors.grey,
+                       width: double.infinity,
+                       height: 35.0,
+                         child:  Center(
+                         child: Text("PLan Semestral"
+                           ,style:
+                           TextStyle(
+                               color: Colors.white,
+                               fontSize: 18.0
+                           ),
+                         ),
+                       )
+                     ),
+                     Expanded(child: Container(
+                         color: Colors.white ,
+                         width: double.infinity,
+                         child:  Center(
+                           child: Text("PLan Semestral"
+                             ,style:
+                             TextStyle(
+                                 color: Colors.grey,
+                                 fontSize: 18.0
+                             ),
+                           ),
+                         )
+                     ))
+                   ],
 
-    );
+
+                 ),
+               ),
+             Container(
+               width: 20.0,
+               color: Colors.red,
+               child: Column(
+                 children: [
+                   Container(
+                       color: Colors.grey,
+                       width: double.infinity,
+                       height: 35.0,
+                       child:  Center(
+                         child: Text("PLan Semestral"
+                           ,style:
+                           TextStyle(
+                               color: Colors.white,
+                               fontSize: 18.0
+                           ),
+                         ),
+                       )
+                   ),
+                   Expanded(child: Container(
+                       color: Colors.white ,
+                       width: double.infinity,
+                       child:  Center(
+                         child: Text("PLan Semestral"
+                           ,style:
+                           TextStyle(
+                               color: Colors.grey,
+                               fontSize: 18.0
+                           ),
+                         ),
+                       )
+                   ))
+                 ],
+
+
+               ),
+             ),
+             Container(
+               width: 20.0,
+               color: Colors.red,
+               child: Column(
+                 children: [
+                   Container(
+                       color: Colors.grey,
+                       width: double.infinity,
+                       height: 35.0,
+                       child:  Center(
+                         child: Text("PLan Semestral"
+                           ,style:
+                           TextStyle(
+                               color: Colors.white,
+                               fontSize: 18.0
+                           ),
+                         ),
+                       )
+                   ),
+                   Expanded(child: Container(
+                       color: Colors.white ,
+                       width: double.infinity,
+                       child:  Center(
+                         child: Text("PLan Semestral"
+                           ,style:
+                           TextStyle(
+                               color: Colors.grey,
+                               fontSize: 18.0
+                           ),
+                         ),
+                       )
+                   ))
+                 ],
+               ),
+             ),
+
+             Container(
+               padding: EdgeInsets.symmetric(vertical: 40.0),
+               child: ElevatedButton( style: TextButton.styleFrom(
+                 backgroundColor: Colors.amber,
+                 shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20.0) )
+
+               ),onPressed: (){
+                 showDialog(context: context, builder: (BuildContext context){
+                   return AlertDialog(
+                     title: Text(
+                       "helo kitty"
+                     ),
+                   );
+                 });
+               }, child: Container(
+                 color: Colors.amber,
+                 child: Text("ADQUIRIR", style: TextStyle(
+                     fontSize: 25.0
+                 ),),
+               )),
+             )
+
+
+
+             ],)
+           ),
+
+        ]
+       ),
+     ),
+   );
   }
 
 }
