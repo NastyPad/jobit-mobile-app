@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen_send.dart';
 
-class find_postulant extends StatelessWidget {
+class find_postulant extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: MyCustomForm(),
-    );
-  }
+  State<find_postulant> createState() => _MyCustomState();
 }
 
-class MyCustomForm extends StatefulWidget {
-  @override
-  State<MyCustomForm> createState() => _MyCustomState();
-}
-
-class _MyCustomState extends State<MyCustomForm> {
+class _MyCustomState extends State<find_postulant> {
   List searchTerms = [
     {
       'name': 'Dyland Saldana 1',
@@ -23,7 +14,7 @@ class _MyCustomState extends State<MyCustomForm> {
       'about':
           "I've been studying at UPC since 2019. In all my student path, I've been developing apps with different frameworks and technologies for university projects in each semester. I have domain in Spring Boot and .NET in server side applications. In the other hand, for client side applications, I utilize Vue.",
       'avatar':
-          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg'
+          'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg',
     },
     {
       'name': 'Steven Saldana',
@@ -148,8 +139,7 @@ class _MyCustomState extends State<MyCustomForm> {
                                     i['name'],
                                     i['userSpecialities'],
                                     i['avatar'],
-                                    i['about'])
-                                    )
+                                    i['about']))
                             //
                             );
                       },
@@ -167,12 +157,13 @@ class _MyCustomState extends State<MyCustomForm> {
       if (element['name'].toLowerCase().contains(busqueda.toLowerCase())) {
         Result.add(element);
       }
-      if (element['userSpecialities']
-          .toLowerCase()
-          .contains(busqueda.toLowerCase())) {
-        Result.add(element);
+      for (var abilitie in element['userSpecialities']) {
+        if (abilitie.toLowerCase().contains(busqueda.toLowerCase())) {
+          Result.add(element);
+        }
       }
     }
+
     setState(() {
       Result = Result;
     });
@@ -199,7 +190,8 @@ class _newPageState extends State<newPage> {
           title: Text('Postulante ' + widget.name),
           backgroundColor: Color.fromARGB(255, 255, 191, 0),
         ),
-        body: DeveloperProfileScreenSend(widget.about, widget.userSpecialities, widget.userPhoto)
+        body: DeveloperProfileScreenSend(
+            widget.about, widget.userSpecialities, widget.userPhoto)
 
         // DeveloperProfileScreenSend(i['name'], i['userSpecialities'], i['avatar']) ,
         );

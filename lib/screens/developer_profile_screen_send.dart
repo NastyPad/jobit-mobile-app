@@ -33,6 +33,28 @@ class _DeveloperProfileScreenSendState
     super.initState();
   }
 
+  List projects = [
+    {
+      'nameProject': 'Genshi Impact',
+      'shortDescription':'Juego para celulares',
+      'imageProject':
+          'https://i.pinimg.com/originals/b4/f2/aa/b4f2aab8fcb2ad1eb291bcea536c4269.gif',
+      'imageEvidence':
+          'https://juncotic.com/wp-content/uploads/2016/09/animacion4.gif',
+      'descriptionProject':
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+    },
+    {
+      'nameProject': 'God OF War',
+      'shortDescription':'Juego para PS5',
+      'imageProject':
+          'https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7',
+      'imageEvidence':
+          'https://preview.redd.it/xns02leh3rm41.jpg?auto=webp&s=b6da8b89d95dcf0d38d873f04cf515d4db6c1a58',
+      'descriptionProject':
+          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     final userPhoto = Container(
@@ -220,7 +242,7 @@ class _DeveloperProfileScreenSendState
         spacing: 3,
         runSpacing: 6,
         children: [
-          for (var i in widget.userSpecialities)
+          for (var i in projects)
             Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
@@ -232,8 +254,8 @@ class _DeveloperProfileScreenSendState
                 children: <Widget>[
                   ListTile(
                     leading: const Icon(Icons.album, size: 40),
-                    title: Text('Sonu Nigam', style: TextStyle(fontSize: 15.0)),
-                    subtitle: Text('Best of Sonu Nigam Music.',
+                    title: Text(i['nameProject']!, style: TextStyle(fontSize: 15.0)),
+                    subtitle: Text(i['shortDescription']!,
                         style: TextStyle(fontSize: 14.0)),
                     trailing: ElevatedButton(
                       child: Text(
@@ -246,11 +268,11 @@ class _DeveloperProfileScreenSendState
                             MaterialPageRoute(
                                 builder: (context) => Scaffold(
                                       appBar: AppBar(
-                                        title: Text('Projecto'),
+                                        title: Text(i['nameProject']),
                                         backgroundColor:
                                             Color.fromARGB(255, 255, 191, 0),
                                       ),
-                                      body: projects_details('asd'),
+                                      body: projects_details(i),
                                     )
 
                                 //projects_details('text')
