@@ -5,8 +5,6 @@ import 'package:jobit_mobile_app/screens/developer_profile_screen.dart';
 import 'package:jobit_mobile_app/screens/find_postulant.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen_send.dart';
 import 'package:jobit_mobile_app/screens/notifications.dart';
-import 'package:jobit_mobile_app/screens/plan_premiun_screen.dart';
-import 'package:jobit_mobile_app/screens/plans_screen.dart';
 
 
 class MyHttpOverrides extends HttpOverrides {
@@ -63,7 +61,7 @@ class MyApp extends StatelessWidget {
           body:
 
           //  DeveloperProfileScreenSend(userBio, userSpecialities, userPhoto)
-          PlanPremium(),
+          find_postulant(),
           // DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
 
           // ChatRecruiter()
