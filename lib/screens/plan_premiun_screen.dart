@@ -128,6 +128,59 @@ class PlanPremium extends StatelessWidget {
                                       color: Colors.blue
                                     ),
                                   ),
+                                  content: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                       Image.network("https://www.visa.com.pe/dam/VCOM/regional/lac/SPA/Default/affluent/credito-gold-400x225.jpg"),
+                                       const SizedBox(
+                                         height: 20,
+                                       ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          border: Border.all(color: Colors.grey)
+                                        ),
+                                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                                        margin: const EdgeInsets.symmetric(horizontal: 15),
+                                        child: TextFormField(
+                                          style:  const TextStyle(fontSize: 20),
+                                          decoration: const InputDecoration(border: InputBorder.none),
+                                        )),
+                                      SizedBox(
+                                        height: 10
+                                      ),
+                                      Container(
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(5),
+                                              border: Border.all(color: Colors.grey)
+                                          ),
+                                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                                          margin: const EdgeInsets.symmetric(horizontal: 15),
+                                          child: TextFormField(
+                                            style:  const TextStyle(fontSize: 20),
+                                            decoration: const InputDecoration(border: InputBorder.none),
+                                          )),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                          children: [
+                                            ElevatedButton(style: TextButton.styleFrom(
+                                      backgroundColor: Colors.green,
+                                          shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20.0) )
+
+                                      ),onPressed: ()=>{}, child: Text(
+                                              "Pagar"
+                                            )),
+                                            ElevatedButton(style: TextButton.styleFrom(
+                                            backgroundColor: Colors.red,
+                                shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(20.0) )
+
+                                ),onPressed: ()=>{}, child: Text(
+                                                "Cancelar"
+                                            )),
+                                          ],
+                                      )
+                                    ],
+                                  ),
 
                                 );
                               });
@@ -135,7 +188,7 @@ class PlanPremium extends StatelessWidget {
                           color: Colors.amber,
                           child: Text("ADQUIRIR", style: TextStyle(
                               fontSize: 25.0
-                          ),),
+                          ),)
                         )),
                       )
                     ],)
@@ -145,5 +198,18 @@ class PlanPremium extends StatelessWidget {
         ),
       ),
     );
+  }
+  Container inputDate(){
+     return Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(color: Colors.grey)
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.symmetric(horizontal: 15),
+        child: TextFormField(
+          style:  const TextStyle(fontSize: 20),
+          decoration: const InputDecoration(border: InputBorder.none),
+        ));
   }
 }
