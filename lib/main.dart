@@ -2,9 +2,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/screens/chat_recruiter.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen.dart';
+import 'package:jobit_mobile_app/screens/enterprise_profile.dart';
 import 'package:jobit_mobile_app/screens/find_postulant.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen_send.dart';
+import 'package:jobit_mobile_app/screens/home_page.dart';
+import 'package:jobit_mobile_app/screens/job_details_screen.dart';
+import 'package:jobit_mobile_app/screens/login_page.dart';
 import 'package:jobit_mobile_app/screens/notifications.dart';
+import 'package:jobit_mobile_app/screens/register_employee_page.dart';
+import 'package:jobit_mobile_app/screens/register_page.dart';
 
 
 class MyHttpOverrides extends HttpOverrides {
@@ -53,6 +59,18 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+      routes:{
+        'register': (context)=>RegisterPage(),
+        'register_employer': (context)=>RegisterPage(),
+        'register_employee': (context)=>RegisterEmployeePage(),
+        'login': (context)=>LoginPage(),
+        'home': (context)=>HomePage(),
+        'job_details': (context)=>JobDetailsScreen(''),
+        'find_postulant': (context)=>find_postulant(),
+        'enterprise_profile': (context)=>enterprise_profile(),
+        'notifications': (context)=>Notifications(),
+
+      },
       home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.amber,
@@ -61,7 +79,7 @@ class MyApp extends StatelessWidget {
           body:
 
           //  DeveloperProfileScreenSend(userBio, userSpecialities, userPhoto)
-          find_postulant(),
+          LoginPage(),
           // DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
 
           // ChatRecruiter()
