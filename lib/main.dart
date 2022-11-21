@@ -69,22 +69,15 @@ class MyApp extends StatelessWidget {
         'find_postulant': (context) => find_postulant(),
         'enterprise_profile': (context) => enterprise_profile(),
         'notifications': (context) => Notifications(),
+        'home_recruiter': (context) => AdsJob(),
+
       },
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.amber,
-          title: Text("JoBit"),
-        ),
-        body: AdsJob(),
-        //  DeveloperProfileScreenSend(userBio, userSpecialities, userPhoto)
-        // LoginPage(),
-        // DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
+              extendBodyBehindAppBar: true,
 
-        // ChatRecruiter()
-        //  DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
+        
+        body: LoginPage(),
 
-        //DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
-        //JobDetailsScreen("Frontend Developer")
       ),
     );
   }
