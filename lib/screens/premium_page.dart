@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/widgets/subscriptions/plan_item.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 class PremiumPage extends StatelessWidget {
   const PremiumPage({Key? key}) : super(key: key);
@@ -87,7 +88,12 @@ class PremiumPage extends StatelessWidget {
                             minimumSize: Size(100, 90.0)
                         ),
                         onPressed: () {
-
+                           showDialog(context: context,
+                           builder: (BuildContext context) {
+                       return AlertDialog(
+          
+                       )
+                        });
                         }, child:
                     const Text("ADQUIRIR",
                         style: TextStyle(
