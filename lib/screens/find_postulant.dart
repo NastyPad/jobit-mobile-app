@@ -97,58 +97,60 @@ class _MyCustomState extends State<find_postulant> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-            child: TextFormField(
-              onChanged: (String value) {
-                loadData(value);
-              },
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Buscar Postulante',
+    return Scaffold(
+      body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+              child: TextFormField(
+                onChanged: (String value) {
+                  loadData(value);
+                },
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Buscar Postulante',
+                ),
               ),
             ),
-          ),
-          Expanded(
-              child: ListView(
-            children: [
-              for (var i in Result)
-                Card(
-                  child: ListTile(
-                    title: Text(i['name']),
-                    subtitle: Row(
-                      children: [
-                        for (var j in i['userSpecialities'])
-                          Text(j.toString() + ' '),
-                      ],
-                    ),
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(i['avatar']),
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.arrow_forward),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                //AQUI VA EL PERFIL DEL POSTULANTE
-                                builder: (context) => newPage(
-                                    i['name'],
-                                    i['userSpecialities'],
-                                    i['avatar'],
-                                    i['about']))
-                            //
-                            );
-                      },
+            Expanded(
+                child: ListView(
+              children: [
+                for (var i in Result)
+                  Card(
+                    child: ListTile(
+                      title: Text(i['name']),
+                      subtitle: Row(
+                        children: [
+                          for (var j in i['userSpecialities'])
+                            Text(j.toString() + ' '),
+                        ],
+                      ),
+                      leading: CircleAvatar(
+                        backgroundImage: NetworkImage(i['avatar']),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.arrow_forward),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  //AQUI VA EL PERFIL DEL POSTULANTE
+                                  builder: (context) => newPage(
+                                      i['name'],
+                                      i['userSpecialities'],
+                                      i['avatar'],
+                                      i['about']))
+                              //
+                              );
+                        },
+                      ),
                     ),
                   ),
-                ),
-            ],
-          ))
-        ]);
+              ],
+            ))
+          ]),
+    );
   }
 
   void loadData(busqueda) {

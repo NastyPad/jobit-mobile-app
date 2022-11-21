@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/screens/chat_recruiter.dart';
 import 'package:jobit_mobile_app/screens/home_page.dart';
 import 'package:jobit_mobile_app/screens/notifications.dart';
-import 'package:jobit_mobile_app/screens/notifications_postulant.dart';
 import 'package:jobit_mobile_app/screens/premium_page.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen.dart';
 
@@ -84,7 +83,7 @@ class NavigationDrawer extends StatelessWidget {
           ),
         onTap: (){
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context)=>  NotificationsPostulant(),
+            builder: (context)=>  Notifications(),
           ));
         },
       ),
