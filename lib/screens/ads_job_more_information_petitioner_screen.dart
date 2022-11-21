@@ -5,16 +5,19 @@ import '../widgets/alertDialog_AcceptApplicantJob.dart';
 import '../widgets/alertDialog_RejectApplicantJob.dart';
 
 class detailJobAd extends StatefulWidget {
-
   @override
   State<detailJobAd> createState() => _detailJobAdState();
 }
 
 class _detailJobAdState extends State<detailJobAd> {
-  List<String> name = ["Alejandro Pizarro"];
-  List<String> imgApplicant = ["https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE="];
-  List<String> email = ["alejandro20@gmail.com"];
-
+  List<String> name = ["Alejandro Pizarro", "Alejandro Pizarro","Alejandro Pizarro"];
+  List<String> imgApplicant = [
+    "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=",
+    "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=",
+    "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE="
+  ];
+  List<String> email = ["alejandro20@gmail.com", "alejandro20@gmail.com", "alejandro20@gmail.com"];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,13 +27,12 @@ class _detailJobAdState extends State<detailJobAd> {
           leading: IconButton(icon: Icon(Icons.menu), onPressed: null),
           title: Text("JoBit"),
         ),
-        body:
-        SingleChildScrollView(
-          physics: NeverScrollableScrollPhysics(),
+        body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(top: 30, right: 30, left: 30, bottom: 10),
+                margin:
+                    EdgeInsets.only(top: 30, right: 30, left: 30, bottom: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   color: Colors.white,
@@ -38,13 +40,11 @@ class _detailJobAdState extends State<detailJobAd> {
                     BoxShadow(
                         color: Colors.black45,
                         blurRadius: 7.0,
-                        offset: Offset(0.0, 0)
-                    )
+                        offset: Offset(0.0, 0))
                   ],
                 ),
                 width: 600,
                 height: 250,
-
                 child: Column(
                   children: [
                     Row(
@@ -52,11 +52,9 @@ class _detailJobAdState extends State<detailJobAd> {
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15.0),
-                              color: Colors.yellow
-                          ),
+                              color: Colors.yellow),
                           padding: const EdgeInsets.all(12),
                           margin: const EdgeInsets.only(left: 15),
-
                           child: Text(
                             'Mobile development',
                             style: TextStyle(
@@ -92,20 +90,21 @@ class _detailJobAdState extends State<detailJobAd> {
                       children: [
                         Expanded(
                           child: Container(
-                              margin: EdgeInsets.only(top: 6, left: 20, right: 10),
+                              margin:
+                                  EdgeInsets.only(top: 6, left: 20, right: 10),
                               child: Text(
                                 "totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
                               )),
-
                         )
                       ],
                     ),
-
                   ],
                 ),
               ),
-              Container(//30
-                margin: EdgeInsets.only(left: 30, top: 10, right: 30, bottom: 10),
+              Container(
+                //30
+                margin:
+                    EdgeInsets.only(left: 30, top: 10, right: 30, bottom: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.0),
                   color: Colors.white,
@@ -113,8 +112,7 @@ class _detailJobAdState extends State<detailJobAd> {
                     BoxShadow(
                         color: Colors.black45,
                         blurRadius: 7.0,
-                        offset: Offset(0.0, 0)
-                    )
+                        offset: Offset(0.0, 0))
                   ],
                 ),
                 width: 600,
@@ -124,14 +122,15 @@ class _detailJobAdState extends State<detailJobAd> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text("Present by: "),
-                    Image.network("https://cdn.pixabay.com/photo/2022/10/23/22/45/highway-7542272_960_720.jpg", width: 100, height: 100),
+                    Image.network(
+                        "https://cdn.pixabay.com/photo/2022/10/23/22/45/highway-7542272_960_720.jpg",
+                        width: 100,
+                        height: 100),
                     Container(
                       padding: EdgeInsets.only(),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6.0),
-                          color: Colors.amber
-                      ),
-
+                          color: Colors.amber),
                       child: TextButton(
                           onPressed: null,
                           child: Text(
@@ -141,8 +140,7 @@ class _detailJobAdState extends State<detailJobAd> {
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
                             ),
-                          )
-                      ),
+                          )),
                     )
                   ],
                 ),
@@ -156,119 +154,101 @@ class _detailJobAdState extends State<detailJobAd> {
                     BoxShadow(
                         color: Colors.black45,
                         blurRadius: 7.0,
-                        offset: Offset(0.0, 0)
-                    )
+                        offset: Offset(0.0, 0))
                   ],
                 ),
                 width: 600,
-
-
                 child: Column(
-
                   children: [
                     Row(
-
                       children: [
                         Container(
                           margin: EdgeInsets.only(left: 10, top: 10),
-
                           child: Text(
                             "Applicants",
                             style: TextStyle(
                                 color: Colors.amber,
-                                fontWeight: FontWeight.bold
-                            ),
-
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
                     ),
-
                     SizedBox(
-                      height: 120,
+                      height: 300,
                       child: ListView.builder(
                         itemCount: name.length,
-                        itemBuilder: (BuildContext context, int index){
+                        itemBuilder: (BuildContext context, int index) {
                           return Card(
                               child: Container(
-                                margin: EdgeInsets.only(left: 10, right: 20),
-
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            margin: EdgeInsets.only(left: 10, right: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Image.network(imgApplicant[index],
+                                    width: 100, height: 100),
+                                Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Image.network(imgApplicant[index], width: 100, height: 100),
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          name[index],
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.amber,
-                                              fontSize: 15
-                                          ),
-                                        ),
-                                        Text(
-                                          email[index],
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,
-                                              fontSize: 10
-                                          ),
-                                        ),
-                                      ],
+                                    Text(
+                                      name[index],
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.amber,
+                                          fontSize: 15),
                                     ),
-
-                                    IconButton(
-                                        onPressed: (){
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context){
-                                              return acceptApplicantConfirm();
-                                            },
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.check_circle,
-                                          size: 40,
-                                          color: Colors.greenAccent,
-                                        )),
-
-                                    IconButton(
-                                        onPressed: (){
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context){
-                                              return rejectApplicantConfirm();
-                                            },
-                                          );
-                                        },
-                                        icon: Icon(
-                                          Icons.cancel,
-                                          size: 40,
-                                          color: Colors.redAccent,
-                                        ))
-
+                                    Text(
+                                      email[index],
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                          fontSize: 10),
+                                    ),
                                   ],
                                 ),
-                              )
-                          );
+                                Flexible(
+                                  child: IconButton(
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return acceptApplicantConfirm();
+                                          },
+                                        );
+                                      },
+                                      icon: Icon(
+                                        Icons.check_circle,
+                                        size: 40,
+                                        color: Colors.greenAccent,
+                                      )),
+                                ),
+                                Flexible(
+                                  child: IconButton(
+                                      onPressed: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return rejectApplicantConfirm();
+                                          },
+                                        );
+                                      },
+                                      icon: Icon(
+                                        Icons.cancel,
+                                        size: 40,
+                                        color: Colors.redAccent,
+                                      )),
+                                )
+                              ],
+                            ),
+                          ));
                         },
                       ),
                     )
-
                   ],
-
-
                 ),
               )
-
-
             ],
           ),
-        )
-
-
-
-    );}
+        ));
+  }
 }

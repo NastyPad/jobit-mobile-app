@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/screens/ads_job_petitioner_screen.dart';
 import 'package:jobit_mobile_app/screens/chat_recruiter.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen.dart';
 import 'package:jobit_mobile_app/screens/enterprise_profile.dart';
@@ -11,7 +12,6 @@ import 'package:jobit_mobile_app/screens/login_page.dart';
 import 'package:jobit_mobile_app/screens/notifications.dart';
 import 'package:jobit_mobile_app/screens/register_employee_page.dart';
 import 'package:jobit_mobile_app/screens/register_page.dart';
-
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -59,36 +59,33 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      routes:{
-        'register': (context)=>RegisterPage(),
-        'register_employer': (context)=>RegisterPage(),
-        'register_employee': (context)=>RegisterEmployeePage(),
-        'login': (context)=>LoginPage(),
-        'home': (context)=>HomePage(),
-        'job_details': (context)=>JobDetailsScreen(''),
-        'find_postulant': (context)=>find_postulant(),
-        'enterprise_profile': (context)=>enterprise_profile(),
-        'notifications': (context)=>Notifications(),
-
+      routes: {
+        'register': (context) => RegisterPage(),
+        'register_employer': (context) => RegisterPage(),
+        'register_employee': (context) => RegisterEmployeePage(),
+        'login': (context) => LoginPage(),
+        'home': (context) => HomePage(),
+        'job_details': (context) => JobDetailsScreen(''),
+        'find_postulant': (context) => find_postulant(),
+        'enterprise_profile': (context) => enterprise_profile(),
+        'notifications': (context) => Notifications(),
       },
       home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.amber,
-            title: Text("JoBit"),
-          ),
-          body:
+        appBar: AppBar(
+          backgroundColor: Colors.amber,
+          title: Text("JoBit"),
+        ),
+        body: AdsJob(),
+        //  DeveloperProfileScreenSend(userBio, userSpecialities, userPhoto)
+        // LoginPage(),
+        // DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
 
-          //  DeveloperProfileScreenSend(userBio, userSpecialities, userPhoto)
-          LoginPage(),
-          // DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
+        // ChatRecruiter()
+        //  DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
 
-          // ChatRecruiter()
-          //  DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
-
-          //DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
-          //JobDetailsScreen("Frontend Developer")
-
-          ),
+        //DeveloperProfileScreen(userBio, userSpecialities, userPhoto)
+        //JobDetailsScreen("Frontend Developer")
+      ),
     );
   }
 }
