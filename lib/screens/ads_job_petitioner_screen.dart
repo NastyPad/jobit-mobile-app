@@ -28,6 +28,14 @@ class _AdsJobState extends State<AdsJob> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+      title: const Text('Home'),
+      centerTitle: true,
+      backgroundColor: Colors.amber.shade600,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
+      ),
+    ),
       drawer: NavigationDrawerEmployer(),
       body: Column(children: <Widget>[
         Center(child: CardContainer()),

@@ -10,14 +10,41 @@ class detailJobAd extends StatefulWidget {
 }
 
 class _detailJobAdState extends State<detailJobAd> {
-  List<String> name = ["Alejandro Pizarro", "Alejandro Pizarro","Alejandro Pizarro"];
-  List<String> imgApplicant = [
-    "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=",
-    "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=",
-    "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE="
+  // List<String> name = ["Alejandro Pizarro", "Alejandro Pizarro","Alejandro Pizarro"];
+  // List<String> imgApplicant = [
+  //   "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=",
+  //   "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=",
+  //   "https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE="
+  // ];
+  // List<String> email = ["alejandro20@gmail.com", "alejandro20@gmail.com", "alejandro20@gmail.com"];
+
+  List applicants = [
+    {
+      'name': 'Alejandro Pizarro',
+      'imgApplicant':
+          'https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=',
+      'email': "alejandro20@gmail.com",
+    },
+    {
+      'name': 'Alejandro Pizarro',
+      'imgApplicant':
+          'https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=',
+      'email': "alejandro20@gmail.com",
+    },
+    {
+      'name': 'Alejandro Pizarro',
+      'imgApplicant':
+          'https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=',
+      'email': "alejandro20@gmail.com",
+    },
+    {
+      'name': 'Alejandro Pizarro',
+      'imgApplicant':
+          'https://media.istockphoto.com/id/1364917563/es/foto/hombre-de-negocios-sonriendo-con-los-brazos-cruzados-sobre-fondo-blanco.jpg?s=612x612&w=is&k=20&c=h5c8OJcQy3zF9J0iUVKMYfANgEaG7gAyHDe03usP0AE=',
+      'email': "alejandro20@gmail.com",
+    }
   ];
-  List<String> email = ["alejandro20@gmail.com", "alejandro20@gmail.com", "alejandro20@gmail.com"];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,76 +201,80 @@ class _detailJobAdState extends State<detailJobAd> {
                       ],
                     ),
                     SizedBox(
-                      height: 300,
-                      child: ListView.builder(
-                        itemCount: name.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Card(
-                              child: Container(
-                            margin: EdgeInsets.only(left: 10, right: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Image.network(imgApplicant[index],
-                                    width: 100, height: 100),
-                                Column(
+                        height: 300,
+                        child:
+                            // ListView.builder(
+                            //   itemCount: name.length,
+                            //   itemBuilder: (BuildContext context, int index) {
+                            ListView(
+                          children: [
+                            for (var i in applicants)
+                              Card(
+                                  child: Container(
+                                margin: EdgeInsets.only(left: 10, right: 20),
+                                child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceAround,
                                   children: [
-                                    Text(
-                                      name[index],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.amber,
-                                          fontSize: 15),
+                                    Image.network(i['imgApplicant'],
+                                        width: 100, height: 100),
+                                    Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          i["name"],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.amber,
+                                              fontSize: 15),
+                                        ),
+                                        Text(
+                                          i["email"],
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                              fontSize: 10),
+                                        ),
+                                      ],
                                     ),
-                                    Text(
-                                      email[index],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black,
-                                          fontSize: 10),
+                                    Flexible(
+                                      child: IconButton(
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return acceptApplicantConfirm();
+                                              },
+                                            );
+                                          },
+                                          icon: Icon(
+                                            Icons.check_circle,
+                                            size: 40,
+                                            color: Colors.greenAccent,
+                                          )),
                                     ),
+                                    Flexible(
+                                      child: IconButton(
+                                          onPressed: () {
+                                            showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) {
+                                                return rejectApplicantConfirm();
+                                              },
+                                            );
+                                          },
+                                          icon: Icon(
+                                            Icons.cancel,
+                                            size: 40,
+                                            color: Colors.redAccent,
+                                          )),
+                                    )
                                   ],
                                 ),
-                                Flexible(
-                                  child: IconButton(
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return acceptApplicantConfirm();
-                                          },
-                                        );
-                                      },
-                                      icon: Icon(
-                                        Icons.check_circle,
-                                        size: 40,
-                                        color: Colors.greenAccent,
-                                      )),
-                                ),
-                                Flexible(
-                                  child: IconButton(
-                                      onPressed: () {
-                                        showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return rejectApplicantConfirm();
-                                          },
-                                        );
-                                      },
-                                      icon: Icon(
-                                        Icons.cancel,
-                                        size: 40,
-                                        color: Colors.redAccent,
-                                      )),
-                                )
-                              ],
-                            ),
-                          ));
-                        },
-                      ),
-                    )
+                              ))
+                          ],
+                        )),
                   ],
                 ),
               )

@@ -12,6 +12,7 @@ class _enterprise_profileState extends State<enterprise_profile> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
+        
         body: Center(
           child: Card(
             elevation: 50,
