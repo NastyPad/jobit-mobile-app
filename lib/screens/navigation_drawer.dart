@@ -127,7 +127,7 @@ class NavigationDrawer extends StatelessWidget {
           //close navigator drawer before
           Navigator.pop(context);
           Navigator.of(context).push(MaterialPageRoute(
-            builder: (context)=> const PremiumPage(),
+            builder: (context)=> PremiumPage(),
           ));
         },
       ),

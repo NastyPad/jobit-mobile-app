@@ -1,9 +1,50 @@
+import 'package:credit_card_input_form/credit_card_input_form.dart';
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/widgets/subscriptions/plan_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PremiumPage extends StatelessWidget {
-  const PremiumPage({Key? key}) : super(key: key);
+   PremiumPage({Key? key}) : super(key: key);
+  final Map<String, String> customCaptions = {
+    'PREV': 'Prev',
+    'NEXT': 'Next',
+    'DONE': 'Done',
+    'CARD_NUMBER': 'Card Number',
+    'CARDHOLDER_NAME': 'Cardholder Name',
+    'VALID_THRU': 'Valid Thru',
+    'SECURITY_CODE_CVC': 'Security Code (CVC)',
+    'NAME_SURNAME': 'Name',
+    'MM_YY': 'MM/YY',
+    'RESET': 'Reset',
+  };
+  final cardDecoration = BoxDecoration(
+      boxShadow: <BoxShadow>[
+        BoxShadow(color: Colors.black54, blurRadius: 15.0, offset: Offset(0, 8))
+      ],
+      gradient: LinearGradient(
+          colors: [
+            Colors.black,
+            Colors.black45,
+          ],
+          begin: const FractionalOffset(0.0, 0.0),
+          end: const FractionalOffset(1.0, 0.0),
+          stops: [0.0, 1.0],
+          tileMode: TileMode.clamp),
+      borderRadius: BorderRadius.all(Radius.circular(15)));
+
+  final buttonStyle = BoxDecoration(
+    borderRadius: BorderRadius.circular(30.0),
+    gradient: LinearGradient(
+        colors: [
+          const Color(0xfffcdf8a),
+          const Color(0xfff38381),
+        ],
+        begin: const FractionalOffset(0.0, 0.0),
+        end: const FractionalOffset(1.0, 0.0),
+        stops: [0.0, 1.0],
+        tileMode: TileMode.clamp),
+  );
+
 
   @override
   Widget build(context) {
@@ -87,7 +128,36 @@ class PremiumPage extends StatelessWidget {
                             minimumSize: Size(100, 90.0)
                         ),
                         onPressed: () {
-
+                           showDialog(context: context,
+                           builder: (BuildContext context) {
+                       return AlertDialog(
+                         content: AnimatedContainer(
+                           duration: Duration(milliseconds: 300),
+                             child: Stack(children: [
+                            SizedBox(
+                              width: 400.0,
+                              height: 2000.0,
+                              child:
+                              CreditCardInputForm(
+                                showResetButton: true,
+                                onStateChange: (currentState, cardInfo) {
+                                  print(currentState);
+                                  print(cardInfo);
+                                },
+                                customCaptions: customCaptions,
+                                frontCardDecoration: cardDecoration,
+                                backCardDecoration: cardDecoration,
+                                // prevButtonStyle: buttonStyle,
+                                // nextButtonStyle: buttonStyle,
+                                // prevButtonTextStyle: buttonTextStyle,
+                                // nextButtonTextStyle: buttonTextStyle,
+                                // resetButtonTextStyle: buttonTextStyle,
+                              ),
+                            )
+                          ])
+                       )
+                             );
+                        });
                         }, child:
                     const Text("ADQUIRIR",
                         style: TextStyle(
@@ -104,4 +174,5 @@ class PremiumPage extends StatelessWidget {
       ),
     );
   }
+
 }
