@@ -5,6 +5,11 @@ import '../widgets/alertDialog_AcceptApplicantJob.dart';
 import '../widgets/alertDialog_RejectApplicantJob.dart';
 
 class detailJobAd extends StatefulWidget {
+  String adTitle;
+  String adDescription;
+
+  detailJobAd(this.adTitle, this.adDescription);
+
   @override
   State<detailJobAd> createState() => _detailJobAdState();
 }
@@ -101,7 +106,7 @@ class _detailJobAdState extends State<detailJobAd> {
                             padding: const EdgeInsets.all(0),
                             margin: const EdgeInsets.only(top: 10, left: 20),
                             child: Text(
-                              "Mobile application programmer",
+                              widget.adTitle,
                               style: TextStyle(
                                 color: Colors.amber,
                                 fontWeight: FontWeight.bold,
@@ -120,7 +125,7 @@ class _detailJobAdState extends State<detailJobAd> {
                               margin:
                                   EdgeInsets.only(top: 6, left: 20, right: 10),
                               child: Text(
-                                "totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+                                widget.adDescription,
                               )),
                         )
                       ],

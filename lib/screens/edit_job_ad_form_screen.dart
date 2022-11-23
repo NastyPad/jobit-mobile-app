@@ -2,6 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class updateAdJob extends StatefulWidget {
+  String adTitle;
+  String adDescription;
+  String adSalary;
+
+  updateAdJob(this.adTitle, this.adDescription, this.adSalary);
+
   @override
   State<updateAdJob> createState() => _updateAdJobState();
 }
@@ -70,6 +76,7 @@ class _updateAdJobState extends State<updateAdJob> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
 
                     child: TextFormField(
+                      initialValue: widget.adTitle,
                       decoration: InputDecoration (labelText: "Input the ad title: "),
                       onSaved: (value){
                         titleValue = value!;
@@ -91,6 +98,7 @@ class _updateAdJobState extends State<updateAdJob> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
 
                     child: TextFormField(
+                      initialValue: widget.adDescription,
                       decoration: InputDecoration (labelText: "Input the ad description: "),
                       onSaved: (value){
                         titleValue = value!;
@@ -112,6 +120,7 @@ class _updateAdJobState extends State<updateAdJob> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
 
                     child: TextFormField(
+                      initialValue: widget.adSalary,
                       decoration: InputDecoration (labelText: "Salary: "),
                       onSaved: (value){
                         salaryValue = value!;
