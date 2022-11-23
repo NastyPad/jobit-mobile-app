@@ -144,7 +144,7 @@ class _AdsJobState extends State<AdsJob> {
                                                             context,
                                                             MaterialPageRoute(
                                                                 builder: (context) =>
-                                                                    updateAdJob(adJob.title.toString(), adJob.description.toString(), adJob.salary.toString())));
+                                                                    updateAdJob(adJob.title.toString(), adJob.description.toString(), adJob.salary.toString(), adJob.id.toString())));
                                                       },
                                                       child: Text(
                                                         'Edit',
@@ -157,7 +157,7 @@ class _AdsJobState extends State<AdsJob> {
                                                           context: context,
                                                           builder:
                                                               (BuildContext context) {
-                                                            return deleteConfirm();
+                                                            return deleteConfirm(adJob.id.toString());
                                                           },
                                                         );
                                                       },

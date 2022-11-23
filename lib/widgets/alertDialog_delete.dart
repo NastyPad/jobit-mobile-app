@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/services/ad_service.dart';
 
 class deleteConfirm extends StatelessWidget {
-  const deleteConfirm({Key? key}) : super(key: key);
+  String adId;
+
+  deleteConfirm(this.adId);
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +25,24 @@ class deleteConfirm extends StatelessWidget {
             )
         ),
         TextButton(
-            onPressed: (){
+            onPressed: () async {
+              bool deleted=await AdService().deleteAd(adId);
+
+              if(deleted)
+              {
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text('Ad deleted')));
+              }
+              else
+              {
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(SnackBar(content: Text('Failed to delete')));
+              }
+
               Navigator.of(context).pop();
             },
             child: Text(
-              'Accept',
+              'Delet',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.orangeAccent

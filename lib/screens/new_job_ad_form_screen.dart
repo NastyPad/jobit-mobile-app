@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/services/ad_service.dart';
 
 class newAdJob extends StatefulWidget {
   @override
@@ -14,6 +15,11 @@ class _newAdJobState extends State<newAdJob> {
   String viewList = "Select an option";
   late String optionSelected;
   bool visible = false;
+
+  TextEditingController _controllerTitle = TextEditingController();
+  TextEditingController _controllerDescription = TextEditingController();
+  TextEditingController _controllerSalary = TextEditingController();
+  TextEditingController _controllerDate = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +80,7 @@ class _newAdJobState extends State<newAdJob> {
                       onSaved: (value){
                         titleValue = value!;
                       },
+                      controller: _controllerTitle,
                       validator: (value){
                         if (value!.isEmpty){
                           return "Fill this field";
@@ -95,6 +102,7 @@ class _newAdJobState extends State<newAdJob> {
                       onSaved: (value){
                         titleValue = value!;
                       },
+                      controller: _controllerDescription,
                       validator: (value){
                         if (value!.isEmpty){
                           return "Fill this field";
@@ -116,6 +124,7 @@ class _newAdJobState extends State<newAdJob> {
                       onSaved: (value){
                         salaryValue = value!;
                       },
+                      controller: _controllerSalary,
                       validator: (value){
                         if (value!.isEmpty){
                           return "Fill this field";
@@ -192,7 +201,24 @@ class _newAdJobState extends State<newAdJob> {
                           )
                       ),
                       TextButton(
-                          onPressed: (){
+                          onPressed: () async {
+                            int salary = int.parse(_controllerSalary.text);
+                            Map<String, dynamic> dataUpdate = {
+                              'title': _controllerTitle.text,
+                              'description': _controllerDescription.text,
+                              'salary': salary,
+                              'date': "12/12/12",
+                              'img': "avnskaoe"
+                            };
+
+                            bool status = await AdService().postAd(dataUpdate);
+
+                            if(status){
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Post added'),));
+                            }else{
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to add the post')));
+                            }
+
                             Navigator.pop(context);
                           },
                           child: Text(

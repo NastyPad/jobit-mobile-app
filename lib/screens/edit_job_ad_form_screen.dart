@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/services/ad_service.dart';
 
 class updateAdJob extends StatefulWidget {
   String adTitle;
   String adDescription;
   String adSalary;
+  String adId;
 
-  updateAdJob(this.adTitle, this.adDescription, this.adSalary);
+  updateAdJob(this.adTitle, this.adDescription, this.adSalary, this.adId);
 
   @override
   State<updateAdJob> createState() => _updateAdJobState();
@@ -20,6 +22,16 @@ class _updateAdJobState extends State<updateAdJob> {
   String viewList = "Select an option";
   late String optionSelected;
   bool visible = false;
+
+  TextEditingController _controllerTitle = TextEditingController();
+  TextEditingController _controllerDescription = TextEditingController();
+  TextEditingController _controllerSalary = TextEditingController();
+  @override
+  void initState(){
+    _controllerTitle.text = widget.adTitle;
+    _controllerDescription.text = widget.adDescription;
+    _controllerSalary.text = widget.adSalary;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,11 +88,11 @@ class _updateAdJobState extends State<updateAdJob> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
 
                     child: TextFormField(
-                      initialValue: widget.adTitle,
                       decoration: InputDecoration (labelText: "Input the ad title: "),
                       onSaved: (value){
                         titleValue = value!;
                       },
+                      controller: _controllerTitle,
                       validator: (value){
                         if (value!.isEmpty){
                           return "Fill this field";
@@ -98,11 +110,11 @@ class _updateAdJobState extends State<updateAdJob> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
 
                     child: TextFormField(
-                      initialValue: widget.adDescription,
                       decoration: InputDecoration (labelText: "Input the ad description: "),
                       onSaved: (value){
                         titleValue = value!;
                       },
+                      controller: _controllerDescription,
                       validator: (value){
                         if (value!.isEmpty){
                           return "Fill this field";
@@ -120,11 +132,11 @@ class _updateAdJobState extends State<updateAdJob> {
                     padding: const EdgeInsets.symmetric(horizontal: 15),
 
                     child: TextFormField(
-                      initialValue: widget.adSalary,
                       decoration: InputDecoration (labelText: "Salary: "),
                       onSaved: (value){
                         salaryValue = value!;
                       },
+                      controller: _controllerSalary,
                       validator: (value){
                         if (value!.isEmpty){
                           return "Fill this field";
@@ -201,7 +213,29 @@ class _updateAdJobState extends State<updateAdJob> {
                           )
                       ),
                       TextButton(
-                          onPressed: (){
+                          onPressed: () async {
+                            int salary = int.parse(_controllerSalary.text);
+                            Map<String, dynamic> dataToUpdate = {
+                              'title': _controllerTitle.text,
+                              'description': _controllerDescription.text,
+                              'salary': salary,
+                              'date': "12/12/12",
+                              'img': "avnskaoe"
+                            };
+
+                            bool status = await AdService()
+                                .updateAd(dataToUpdate, widget.adId.toString());
+
+                            if (status) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(content: Text('Post updated')));
+                            }
+                            else
+                            {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(content: Text('Failed to update the post')));
+                            }
+
                             Navigator.pop(context);
                           },
                           child: Text(
