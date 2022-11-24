@@ -38,7 +38,7 @@ class _updateAdJobState extends State<updateAdJob> {
     GlobalKey formKey = GlobalKey<FormState>();
 
     return Scaffold(
-      backgroundColor: Colors.black12,
+      backgroundColor: Colors.white70,
       appBar: AppBar(
         backgroundColor: Colors.amber,
         leading: IconButton(icon: Icon(Icons.menu), onPressed: null),
@@ -73,183 +73,210 @@ class _updateAdJobState extends State<updateAdJob> {
                   ),
                 )
             ),
-            Form(
-              key: formKey,
-              child: Column(
+            Expanded(
+              child: Form(
+                key: formKey,
+                child: Column(
 
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey)
-                    ),
-                    margin: const EdgeInsets.only(top: 40),
-                    width: 350,
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Colors.grey)
+                      ),
+                      margin: const EdgeInsets.only(top: 40),
+                      width: 350,
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
 
-                    child: TextFormField(
-                      decoration: InputDecoration (labelText: "Input the ad title: "),
-                      onSaved: (value){
-                        titleValue = value!;
-                      },
-                      controller: _controllerTitle,
-                      validator: (value){
-                        if (value!.isEmpty){
-                          return "Fill this field";
-                        }
-                      },
+                      child: TextFormField(
+                        decoration: InputDecoration (labelText: "Input the ad title: "),
+                        onSaved: (value){
+                          titleValue = value!;
+                        },
+                        controller: _controllerTitle,
+                        validator: (value){
+                          if (value!.isEmpty){
+                            return "Fill this field";
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey)
-                    ),
-                    margin: const EdgeInsets.only(top: 20),
-                    width: 350,
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Colors.grey)
+                      ),
+                      margin: const EdgeInsets.only(top: 20),
+                      width: 350,
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
 
-                    child: TextFormField(
-                      decoration: InputDecoration (labelText: "Input the ad description: "),
-                      onSaved: (value){
-                        titleValue = value!;
-                      },
-                      controller: _controllerDescription,
-                      validator: (value){
-                        if (value!.isEmpty){
-                          return "Fill this field";
-                        }
-                      },
+                      child: TextFormField(
+                        decoration: InputDecoration (labelText: "Input the ad description: "),
+                        onSaved: (value){
+                          titleValue = value!;
+                        },
+                        controller: _controllerDescription,
+                        validator: (value){
+                          if (value!.isEmpty){
+                            return "Fill this field";
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey)
+                    Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: Colors.grey)
+                      ),
+                      margin: const EdgeInsets.only(top: 20),
+                      width: 350,
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+
+                      child: TextFormField(
+                        decoration: InputDecoration (labelText: "Salary: "),
+                        onSaved: (value){
+                          salaryValue = value!;
+                        },
+                        controller: _controllerSalary,
+                        validator: (value){
+                          if (value!.isEmpty){
+                            return "Fill this field";
+                          }
+                        },
+                      ),
                     ),
-                    margin: const EdgeInsets.only(top: 20),
-                    width: 350,
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-
-                    child: TextFormField(
-                      decoration: InputDecoration (labelText: "Salary: "),
-                      onSaved: (value){
-                        salaryValue = value!;
-                      },
-                      controller: _controllerSalary,
-                      validator: (value){
-                        if (value!.isEmpty){
-                          return "Fill this field";
-                        }
-                      },
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5),
-                        border: Border.all(color: Colors.grey)
-                    ),
-                    margin: const EdgeInsets.only(top: 20),
-
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-
-                    child: DropdownButton(
-                      items: list.map((String a){
-                        return DropdownMenuItem(
-                            value: a,
-                            child: Text(a));
-                      }).toList(),
-
-                      onChanged: (_value) => {
-                        setState((){
-                          viewList = _value!;
-                          optionSelected = viewList;
-                        })
-                      },
-                      hint: Text(viewList),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-
-                    ),
-                    margin: const EdgeInsets.only(top: 20, left: 17),
-
-                    child: Row(
-                      children: [
-                        Checkbox(
-                          value: visible,
-                          onChanged: (value){
-                            setState((){
-                              visible = value!;
-                            });
-                          },
+                    
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            border: Border.all(color: Colors.grey)
                         ),
-                        GestureDetector(
-                          onTap: (){
-                            setState(() {
-                              visible = !visible;
-                            });
-                          },
-                          child: Text("This ad will be visible"),
-                        )
+                        margin: const EdgeInsets.only(top: 20),
 
-                      ],
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+
+                        child: DropdownButton(
+                          items: list.map((String a){
+                            return DropdownMenuItem(
+                                value: a,
+                                child: Text(a));
+                          }).toList(),
+
+                          onChanged: (_value) => {
+                            setState((){
+                              viewList = _value!;
+                              optionSelected = viewList;
+                            })
+                          },
+                          hint: Text(viewList),
+                        ),
+                      ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      TextButton(
-                          onPressed: (){
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            'CLOSE',
-                            style: TextStyle(
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold
-                            ),
-                          )
+                    Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+
+                        ),
+                        margin: const EdgeInsets.only(top: 20, left: 17),
+
+                        child: 
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Checkbox(
+                                  value: visible,
+                                  onChanged: (value){
+                                    setState((){
+                                      visible = value!;
+                                    });
+                                  },
+                                ),
+                              ),
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: (){
+                                    setState(() {
+                                      visible = !visible;
+                                    });
+                                  },
+                                  child: Text("This ad will be visible"),
+                                ),
+                              )
+
+                            ],
+                          ),
+                        ),
                       ),
-                      TextButton(
-                          onPressed: () async {
-                            int salary = int.parse(_controllerSalary.text);
-                            Map<String, dynamic> dataToUpdate = {
-                              'title': _controllerTitle.text,
-                              'description': _controllerDescription.text,
-                              'salary': salary,
-                              'date': "12/12/12",
-                              'img': "avnskaoe"
-                            };
-
-                            bool status = await AdService()
-                                .updateAd(dataToUpdate, widget.adId.toString());
-
-                            if (status) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(content: Text('Post updated')));
-                            }
-                            else
-                            {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(SnackBar(content: Text('Failed to update the post')));
-                            }
-
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            'EDIT',
-                            style: TextStyle(
-                                color: Colors.amber,
-                                fontWeight: FontWeight.bold
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: TextButton(
+                                onPressed: (){
+                                  Navigator.pop(context);
+                                },
+                                child: 
+                                Expanded(
+                                  child: Text(
+                                    'CLOSE',
+                                    style: TextStyle(
+                                        color: Colors.red,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                )
                             ),
-                          )
-                      ),
-                    ],
-                  )
+                          ),
+                          
+                          Expanded(
+                            child: TextButton(
+                                onPressed: () async {
+                                  int salary = int.parse(_controllerSalary.text);
+                                  Map<String, dynamic> dataToUpdate = {
+                                    'title': _controllerTitle.text,
+                                    'description': _controllerDescription.text,
+                                    'salary': salary,
+                                    'date': "12/12/12",
+                                    'img': "avnskaoe"
+                                  };
 
-                ],
+                                  bool status = await AdService()
+                                      .updateAd(dataToUpdate, widget.adId.toString());
+
+                                  if (status) {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(content: Text('Post updated')));
+                                  }
+                                  else
+                                  {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(content: Text('Failed to update the post')));
+                                  }
+
+                                  Navigator.pop(context);
+                                },
+                                child: 
+                                Expanded(
+                                  child: Text(
+                                    'EDIT',
+                                    style: TextStyle(
+                                        color: Colors.amber,
+                                        fontWeight: FontWeight.bold
+                                    ),
+                                  ),
+                                )
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+
+                  ],
+                ),
               ),
             )
           ],

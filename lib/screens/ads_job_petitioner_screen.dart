@@ -8,6 +8,7 @@ import 'package:jobit_mobile_app/services/ad_service.dart';
 import '../widgets/alertDialog_delete.dart';
 import '../widgets/title_ads.dart';
 import 'ads_job_more_information_petitioner_screen.dart';
+import 'package:intl/intl.dart';
 
 class AdsJob extends StatefulWidget {
   @override
@@ -15,6 +16,10 @@ class AdsJob extends StatefulWidget {
 }
 
 class _AdsJobState extends State<AdsJob> {
+  static final DateTime now = DateTime.now();
+  static final DateFormat formatter =DateFormat('yyyy-MM-dd');
+  final String formatted = formatter.format(now);
+
   List<String> title = [
     "Programador de aplicaciones móviles",
     "Programador backend en ASP.NET"
@@ -79,7 +84,7 @@ class _AdsJobState extends State<AdsJob> {
                                                 child: Expanded(
                                                   child: Text(
                                                     adJob.date.toString(),
-                                                    textDirection: TextDirection.ltr,
+
                                                     textAlign: TextAlign.right,
                                                   ),
                                                 ),
