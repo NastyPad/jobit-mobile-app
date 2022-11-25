@@ -6,7 +6,7 @@ import 'package:jobit_mobile_app/models/user_profile_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:jobit_mobile_app/models/user_tech_skill.dart';
 
-var baseUrl = 'https://10.0.2.2:7244/api/v1/applicant';
+var baseUrl = 'https://jobit-api-nastypad.azurewebsites.net/api/v1/applicant';
 
 class AplicantProfile {
   Future<http.Response> getData() async {
@@ -36,8 +36,8 @@ class AplicantProfile {
                     elemento['applicantId'],
                       elemento['firstname'],
                       elemento['lastname'],
-                      elemento['firstname'],
-                      'https://www.industriaanimacion.com///wp-content/uploads/2020/09/aang.jpg',
+                      'Soy estudiante de la carrera de Ingeniería de Sistemas y Computación debe soy Creativo, dinámico y sin temor para asumir el reto de estudiar la carrera del futuro.',
+                      'https://freesvg.org/img/abstract-user-flat-4.png',
                       userTechSkills)),
                 }
             }
