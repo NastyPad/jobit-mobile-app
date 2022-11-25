@@ -151,7 +151,8 @@ class _LoginPageState extends State<LoginPage> {
                             // Navigator.pushNamed(context, 'home');
                             
                             //Recruiter
-                            Navigator.pushNamed(context, 'home_recruiter');
+                            // Navigator.pushNamed(context, 'home_recruiter');
+                            Navigator.pushNamed(context, 'home');
 
                           }
                         },
