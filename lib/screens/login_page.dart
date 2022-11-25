@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,34 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
   bool _isVisible = false;
 
-
+  Future SignIn()async{
+    try{
+      var response= await http
+          .post(Uri.parse('https://10.0.2.2:7244/api/v1/users/auth'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            'email': emailController.text,
+            'password': passwordController.text
+          })
+      );
+      if(response.statusCode==200){
+        Navigator.pushNamed(context, 'home');
+      }
+    }catch(e){
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Correo o contraseña incorrecta"),
+      ));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextFormField(
+                      controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -80,6 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextFormField(
+                      controller: passwordController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -146,14 +173,7 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: () {
                           final isValidForm = formKey.currentState!.validate();
                           if (isValidForm) {
-
-                            //postulant
-                            // Navigator.pushNamed(context, 'home');
-                            
-                            //Recruiter
-                            // Navigator.pushNamed(context, 'home_recruiter');
-                            Navigator.pushNamed(context, 'home');
-
+                            SignIn();
                           }
                         },
                         child: Container(

@@ -49,7 +49,9 @@ class _RegisterEmployerPageState extends State<RegisterEmployerPage> {
       'password': passwordController.text
       })
       );
-      print(response.body);
+      if(response.statusCode==200){
+        Navigator.pushNamed(context, 'login');
+      }
     }catch(e){
       print(e);
     }

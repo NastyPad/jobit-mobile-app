@@ -52,7 +52,12 @@ class _RegisterEmployeePageState extends State<RegisterEmployeePage> {
             'ruc': rucController.text
           })
       );
-      print(response.body);
+      if(response.statusCode==200){
+        Navigator.pushNamed(context, 'login');
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Account created. Now Login"),
+        ));
+      }
     }catch(e){
       print(e);
     }
