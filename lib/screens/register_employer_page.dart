@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,16 +35,20 @@ class _RegisterEmployerPageState extends State<RegisterEmployerPage> {
   bool _isVisible2 = false;
 
   Future SignUpAplicant()async{
-    //cambiar el local host por el ip por mientras
     try{
       var response= await http
-          .post(Uri.parse("https://localhost:7244/api/v1/applicant"),body: {
-        "username": usernameController.text,
-        "firstname": firstnameController.text,
-        "lastname": lastnameController.text,
-        "email": emailController.text,
-        "password": passwordController.text,
-      });
+          .post(Uri.parse('https://10.0.2.2:7244/api/v1/applicant'),
+          headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+          body: jsonEncode(<String, String>{
+      'username': usernameController.text,
+      'firstname': firstnameController.text,
+      'lastname': lastnameController.text,
+      'email': emailController.text,
+      'password': passwordController.text
+      })
+      );
       print(response.body);
     }catch(e){
       print(e);

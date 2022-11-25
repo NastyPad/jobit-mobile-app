@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,15 +36,26 @@ class _RegisterEmployeePageState extends State<RegisterEmployeePage> {
   bool _isVisible2 = false;
 
   Future SignUpRecruiter()async{
-    var response= await http
-    .post(Uri.parse(""),body: {
-      "username": usernameController.text,
-      "firstname": firstnameController.text,
-      "lastname": lastnameController.text,
-      "email": emailController.text,
-      "password": passwordController.text,
-    });
-    print(response.body);
+    try{
+      var response= await http
+          .post(Uri.parse('https://10.0.2.2:7244/api/v1/recruiter'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+          body: jsonEncode(<String, String>{
+            'username': usernameController.text,
+            'firstname': firstnameController.text,
+            'lastname': lastnameController.text,
+            'email': emailController.text,
+            'password': passwordController.text,
+            'companyId': razonsocialController.text,
+            'ruc': rucController.text
+          })
+      );
+      print(response.body);
+    }catch(e){
+      print(e);
+    }
   }
 
   @override
@@ -393,7 +406,7 @@ class _RegisterEmployeePageState extends State<RegisterEmployeePage> {
                             final isValidForm = formKey.currentState!.validate();
                             if (isValidForm) {
                               if(checkBoxValue==true){
-
+                                SignUpRecruiter();
                               }
                             }
                           },

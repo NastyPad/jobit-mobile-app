@@ -77,8 +77,8 @@ class MyApp extends StatelessWidget {
               extendBodyBehindAppBar: true,
 
         
-        body: 
-        find_postulant(),
+        body:
+        LoginPage(),
         // LoginPage(),
           // AdsJob()
       ),
