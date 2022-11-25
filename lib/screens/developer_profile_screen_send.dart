@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/screens/chat_recruiter.dart';
+import 'package:jobit_mobile_app/screens/find_postulant.dart';
 import 'package:jobit_mobile_app/services/project_service.dart';
 import 'package:jobit_mobile_app/widgets/tag.dart';
 import 'package:jobit_mobile_app/widgets/education_item.dart';
@@ -14,8 +16,8 @@ class DeveloperProfileScreenSend extends StatefulWidget {
   int id;
   final List<String> userSpecialities;
 
-  DeveloperProfileScreenSend(this.id,
-      this.userBio, this.userSpecialities, this.userPhoto,
+  DeveloperProfileScreenSend(
+      this.id, this.userBio, this.userSpecialities, this.userPhoto,
       {Key? key})
       : super(key: key);
 
@@ -340,12 +342,28 @@ class _DeveloperProfileScreenSendState
           cardEducationInfo(),
           cardProjects(),
           SizedBox(
-            child: ButtonTextIcon(
-                Colors.amber, Colors.black, 'ENVIAR MENSAJE', Icons.send),
+            child: ElevatedButton(
+              child: Text('Enviar mensaje'),
+              onPressed: () {
+                Navigator.push(context,
+                              MaterialPageRoute(
+                                  //AQUI VA EL PERFIL DEL POSTULANTE
+                                  builder: (context) => ChatRecruiter())
+                              //
+                              );
+              },
+              style: ElevatedButton.styleFrom(primary: Colors.amber,textStyle:TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold)),
+            ),
+            //  ButtonTextIcon(Colors.amber, Colors.black, 'ENVIAR MENSAJE', Icons.send),
+
             width: 200,
           )
         ],
       ),
     );
   }
+
+  
 }

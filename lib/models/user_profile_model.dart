@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:jobit_mobile_app/models/user_tech_skill.dart';
 

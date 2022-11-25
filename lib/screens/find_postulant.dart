@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:core';
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:jobit_mobile_app/models/user_profile_model.dart';
 import 'package:jobit_mobile_app/screens/developer_profile_screen_send.dart';
+import 'package:jobit_mobile_app/screens/navigation_drawer_employer.dart';
 import 'package:jobit_mobile_app/services/aplicant_service.dart';
 
 class find_postulant extends StatefulWidget {
@@ -110,6 +110,7 @@ class _MyCustomState extends State<find_postulant> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerEmployer(),
       appBar: AppBar(
         title: const Text('Buscar'),
         centerTitle: true,

@@ -8,7 +8,7 @@ class MessageService {
   static Future<List<Message>> getAllMessages(int recruiterId, int applicantId) async {
     final response =
     await http.get(Uri.parse(
-        "https://localhost:7244/api/v1/message/"+recruiterId.toString()+"/"+applicantId.toString()));
+        "https://jobit-api-nastypad.azurewebsites.net/api/v1/message/"+recruiterId.toString()+"/"+applicantId.toString()));
 
     if (response.statusCode == 200) {
       final responseJSON = json.decode(response.body);
@@ -27,7 +27,7 @@ class MessageService {
     http.Response response = await http
         .post(
         Uri.parse(
-            "https://localhost:7244/api/v1/message"),
+            "https://jobit-api-nastypad.azurewebsites.net/api/v1/message"),
         body: jsonEncode(data),
         headers: {
           'Content-type': 'application/json'

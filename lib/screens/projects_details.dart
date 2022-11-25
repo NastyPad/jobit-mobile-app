@@ -75,7 +75,7 @@ class projects_details extends StatelessWidget {
                   ),
                   Center(
                     child: Image.network(
-                        height: 150, object.imageEvidence.toString()),
+                        height: 150, object.projectUrl.toString()),
                   ),
                   SizedBox(
                     height: 20,
