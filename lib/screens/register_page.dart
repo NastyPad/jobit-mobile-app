@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-  import 'package:google_fonts/google_fonts.dart';
-
-  class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+import 'package:google_fonts/google_fonts.dart';
+import 'package:jobit_mobile_app/screens/register_employee_page.dart';
+import 'package:jobit_mobile_app/screens/register_employer_page.dart';
+class RegisterPage extends StatefulWidget {
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -32,41 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 //Employer option ----------------------------------------------
                 const Image(
                   image: NetworkImage('https://cdn-icons-png.flaticon.com/512/912/912316.png'),
-                  height: 150,
-                ),
-                SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 90),
-                    child: Material(
-                      color: Colors.amber.shade600,
-                      borderRadius: BorderRadius.circular(12),
-                      child: InkWell(
-                        splashColor: Colors.amber.shade800,
-                        borderRadius: BorderRadius.circular(12),
-                        onTap: () {
-                          Navigator.pushNamed(context, 'register_employee');
-                        },
-                        child:Container(
-                          padding: EdgeInsets.all(15),
-                          child: const Center(
-                            child: Text('Employee',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                ),
-                SizedBox(height: 70),
-
-                //Employee option ----------------------------------------------
-                const Image(
-                  image: NetworkImage('https://cdn-icons-png.flaticon.com/512/912/912318.png'),
-                  height: 150,
+                  height: 100,
                 ),
                 SizedBox(height: 20),
                 Padding(
@@ -77,8 +43,46 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: InkWell(
                       splashColor: Colors.amber.shade800,
                       borderRadius: BorderRadius.circular(12),
-                      onTap: () {
-                        Navigator.pushNamed(context, 'register_employer');
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context)=>  RegisterEmployeePage(),
+                        ));
+                      },
+                      child:Container(
+                        padding: EdgeInsets.all(15),
+                        child: const Center(
+                          child: Text('Employee',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30),
+
+                //Employee option ----------------------------------------------
+                const Image(
+                  image: NetworkImage('https://cdn-icons-png.flaticon.com/512/912/912318.png'),
+                  height: 100,
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 90),
+                  child: Material(
+                    color: Colors.amber.shade600,
+                    borderRadius: BorderRadius.circular(12),
+                    child: InkWell(
+                      splashColor: Colors.amber.shade800,
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: (){
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context)=>  RegisterEmployerPage(),
+                        ));
                       },
                       child:Container(
                         padding: EdgeInsets.all(15),
@@ -95,6 +99,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 20),
               ],
             ),
           ),

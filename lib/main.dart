@@ -11,7 +11,9 @@ import 'package:jobit_mobile_app/screens/job_details_screen.dart';
 import 'package:jobit_mobile_app/screens/login_page.dart';
 import 'package:jobit_mobile_app/screens/notifications.dart';
 import 'package:jobit_mobile_app/screens/register_employee_page.dart';
+import 'package:jobit_mobile_app/screens/register_employer_page.dart';
 import 'package:jobit_mobile_app/screens/register_page.dart';
+import 'package:jobit_mobile_app/screens/terminos_y_condiciones.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -61,8 +63,6 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         'register': (context) => RegisterPage(),
-        'register_employer': (context) => RegisterPage(),
-        'register_employee': (context) => RegisterEmployeePage(),
         'login': (context) => LoginPage(),
         'home': (context) => HomePage(),
         'job_details': (context) => JobDetailsScreen(''),
@@ -70,6 +70,7 @@ class MyApp extends StatelessWidget {
         'enterprise_profile': (context) => enterprise_profile(),
         'notifications': (context) => Notifications(),
         'home_recruiter': (context) => AdsJob(),
+        'terms_conditions': (context) => TermsAndConditionsPage(),
 
       },
       home: Scaffold(

@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart'as http;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,11 +14,12 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
   bool _isVisible = false;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[300],
-        resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Center(
             child: Form(
@@ -31,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                         'https://cdn-icons-png.flaticon.com/512/3712/3712119.png'),
                     height: 70,
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 15),
                   //Hello again------------------------------------
                   Text(
                     'Hello Again!',
@@ -39,14 +41,13 @@ class _LoginPageState extends State<LoginPage> {
                       fontSize: 50,
                     ),
                   ),
-                  SizedBox(height: 10),
                   const Text(
                     'Welcome back. You\'ve been missed!',
                     style: TextStyle(
                       fontSize: 20.0,
                     ),
                   ),
-                  SizedBox(height: 40),
+                  SizedBox(height: 20),
                   //email textfield--------------------------------
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -132,7 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 10),
                   //Sing in button-------------------------------
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -170,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: 10),
                   //Not a member? Sing Up
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -200,3 +201,4 @@ class _LoginPageState extends State<LoginPage> {
         ));
   }
 }
+
