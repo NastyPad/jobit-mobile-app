@@ -1,9 +1,9 @@
 class Project {
-  String nameProject;
-  String imageProject;
+  String projectName;
+  String description;
   String imageEvidence;
-  String descriptionProject;
-  String shortDescription;
-  Project(this.nameProject,this.shortDescription, this.imageProject,this.descriptionProject, this.imageEvidence,
+  String projectUrl;
+  int applicantId;
+  Project(this.projectName,this.description, this.imageEvidence,this.projectUrl, this.applicantId,
   );
 }

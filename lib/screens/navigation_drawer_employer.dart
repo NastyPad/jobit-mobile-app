@@ -127,16 +127,8 @@ class NavigationDrawerEmployer extends StatelessWidget {
             )),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => 
-                Scaffold(
-                    appBar: AppBar(
-                      backgroundColor: Colors.amber,
-                      title: Text("Busqueda"),
-                    ),
-                    body: find_postulant()),
-             
-             
-              ));
+                builder: (context) =>  find_postulant()),
+              );
             },
           ),
           const Divider(

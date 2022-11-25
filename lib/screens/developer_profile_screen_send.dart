@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/services/project_service.dart';
 import 'package:jobit_mobile_app/widgets/tag.dart';
 import 'package:jobit_mobile_app/widgets/education_item.dart';
 import 'package:jobit_mobile_app/models/user_profile_model.dart';
@@ -10,9 +11,10 @@ import 'package:jobit_mobile_app/screens/projects_details.dart';
 class DeveloperProfileScreenSend extends StatefulWidget {
   String userBio;
   String userPhoto;
+  int id;
   final List<String> userSpecialities;
 
-  DeveloperProfileScreenSend(
+  DeveloperProfileScreenSend(this.id,
       this.userBio, this.userSpecialities, this.userPhoto,
       {Key? key})
       : super(key: key);
@@ -27,16 +29,13 @@ class _DeveloperProfileScreenSendState
   // UserAgentClient userAgentClient = UserAgentClient();
   // late Future<User> developer;
 
-  @override
-  void initState() {
-    // developer = userAgentClient.getUserById(0);
-    super.initState();
-  }
+  ProjectService projectService = ProjectService();
+  List finalProjects = [];
 
   List projects = [
     {
       'nameProject': 'Genshi Impact',
-      'shortDescription':'Juego para celulares',
+      'shortDescription': 'Juego para celulares',
       'imageProject':
           'https://i.pinimg.com/originals/b4/f2/aa/b4f2aab8fcb2ad1eb291bcea536c4269.gif',
       'imageEvidence':
@@ -46,7 +45,7 @@ class _DeveloperProfileScreenSendState
     },
     {
       'nameProject': 'God OF War',
-      'shortDescription':'Juego para PS5',
+      'shortDescription': 'Juego para PS5',
       'imageProject':
           'https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7',
       'imageEvidence':
@@ -55,6 +54,21 @@ class _DeveloperProfileScreenSendState
           'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
     }
   ];
+  @override
+  void initState() {
+    // developer = userAgentClient.getUserById(0);
+    loadData();
+    super.initState();
+  }
+
+  loadData() async {
+    finalProjects = await projectService.getProjectsById(widget.id);
+
+    setState(() {
+      finalProjects = finalProjects;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final userPhoto = Container(
@@ -242,7 +256,7 @@ class _DeveloperProfileScreenSendState
         spacing: 3,
         runSpacing: 6,
         children: [
-          for (var i in projects)
+          for (var i in finalProjects)
             Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
@@ -254,9 +268,10 @@ class _DeveloperProfileScreenSendState
                 children: <Widget>[
                   ListTile(
                     leading: const Icon(Icons.album, size: 40),
-                    title: Text(i['nameProject']!, style: TextStyle(fontSize: 15.0)),
-                    subtitle: Text(i['shortDescription']!,
-                        style: TextStyle(fontSize: 14.0)),
+                    title:
+                        Text(i.projectName, style: TextStyle(fontSize: 15.0)),
+                    subtitle:
+                        Text(i.description!, style: TextStyle(fontSize: 14.0)),
                     trailing: ElevatedButton(
                       child: Text(
                           style: TextStyle(
@@ -268,7 +283,7 @@ class _DeveloperProfileScreenSendState
                             MaterialPageRoute(
                                 builder: (context) => Scaffold(
                                       appBar: AppBar(
-                                        title: Text(i['nameProject']),
+                                        title: Text(i.projectName),
                                         backgroundColor:
                                             Color.fromARGB(255, 255, 191, 0),
                                       ),
