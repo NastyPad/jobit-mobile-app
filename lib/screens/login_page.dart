@@ -32,7 +32,9 @@ class _LoginPageState extends State<LoginPage> {
           })
       );
       if(response.statusCode==200){
-        Navigator.pushNamed(context, 'home');
+        // Navigator.pushNamed(context, 'home');
+        Navigator.pushNamed(context, 'home_recruiter');
+
       }
     }catch(e){
       print(e);

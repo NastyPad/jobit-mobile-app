@@ -19,14 +19,14 @@ class ProjectService {
               body = utf8.decode(response.bodyBytes),
               for (var elemento in jsonDecode(body))
                 {
-                  listProject.add(Project(elemento['projectName'], elemento['description'],  'https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7', 'https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7', elemento['applicant']['applicantId']))
+                  listProject.add(Project(elemento['projectName'], elemento['description'],  elemento['imageEvidence'], elemento['projectUrl'], elemento['applicant']['applicantId']))
                 }
             }
     });
   return listProject;
-
   }
-Future<List<Project>> getProjectsById(int id) async {
+
+  Future<List<Project>> getProjectsById(int id) async {
     List<Project> listProject = [];
     String body = '';
     await getData().then((response) => {
@@ -36,7 +36,7 @@ Future<List<Project>> getProjectsById(int id) async {
               for (var elemento in jsonDecode(body))
                 {
                   if(elemento['applicant']['applicantId']==id){
-                  listProject.add(Project(elemento['projectName'], elemento['description'],  'https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7', 'https://cdn1.epicgames.com/offer/3ddd6a590da64e3686042d108968a6b2/EGS_GodofWar_SantaMonicaStudio_S2_1200x1600-fbdf3cbc2980749091d52751ffabb7b7_1200x1600-fbdf3cbc2980749091d52751ffabb7b7', elemento['applicant']['applicantId']))
+                  listProject.add(Project(elemento['projectName'], elemento['description'],  elemento['codeSource'], elemento['projectUrl'], elemento['applicant']['applicantId']))
                 }
                 }
             }
