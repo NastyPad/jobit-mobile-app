@@ -78,7 +78,8 @@ class MyApp extends StatelessWidget {
 
         
         body:
-        LoginPage(),
+        // LoginPage(),
+        find_postulant(),
         // LoginPage(),
           // AdsJob()
       ),

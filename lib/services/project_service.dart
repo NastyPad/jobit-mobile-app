@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:jobit_mobile_app/models/project_model.dart';
 
-var baseUrl = 'https://10.0.2.2:7244/api/v1/project';
+var baseUrl = 'https://jobit-api-nastypad.azurewebsites.net/api/v1/project';
 
 class ProjectService {
   Future<http.Response> getData() async {
