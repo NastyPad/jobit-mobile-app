@@ -38,7 +38,7 @@ class _RegisterEmployeePageState extends State<RegisterEmployeePage> {
   Future SignUpRecruiter()async{
     try{
       var response= await http
-          .post(Uri.parse('https://10.0.2.2:7244/api/v1/recruiter'),
+          .post(Uri.parse('https://jobit-appmoviles.azurewebsites.net/api/v1/recruiter'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },

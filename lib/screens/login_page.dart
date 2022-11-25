@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   Future SignIn()async{
     try{
       var response= await http
-          .post(Uri.parse('https://10.0.2.2:7244/api/v1/users/auth'),
+          .post(Uri.parse('https://jobit-appmoviles.azurewebsites.net/api/v1/users/auth'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },

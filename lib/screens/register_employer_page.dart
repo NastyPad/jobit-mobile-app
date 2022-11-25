@@ -37,7 +37,7 @@ class _RegisterEmployerPageState extends State<RegisterEmployerPage> {
   Future SignUpAplicant()async{
     try{
       var response= await http
-          .post(Uri.parse('https://10.0.2.2:7244/api/v1/applicant'),
+          .post(Uri.parse('https://jobit-appmoviles.azurewebsites.net/api/v1/applicant'),
           headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -51,6 +51,9 @@ class _RegisterEmployerPageState extends State<RegisterEmployerPage> {
       );
       if(response.statusCode==200){
         Navigator.pushNamed(context, 'login');
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("Account created. Now Login"),
+        ));
       }
     }catch(e){
       print(e);
