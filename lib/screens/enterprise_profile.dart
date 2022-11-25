@@ -8,11 +8,20 @@ class enterprise_profile extends StatefulWidget {
 }
 
 class _enterprise_profileState extends State<enterprise_profile> {
+  var text =
+      'Rockstar Games are a game developer and publisher responsible for some of the most successful, controversial, and innovative games in the industry. They are best known for producing series like Grand Theft Auto, Midnight Club, and Max Payne and for their ground-breaking work in open world games.';
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        
+        appBar: AppBar(
+          title: const Text('Notifications'),
+          centerTitle: true,
+          backgroundColor: Colors.amber.shade600,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
+          ),
+        ),
         body: Center(
           child: Card(
             elevation: 50,
@@ -37,7 +46,7 @@ class _enterprise_profileState extends State<enterprise_profile> {
                               "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rockstar_Games_Logo.svg/1200px-Rockstar_Games_Logo.svg.png",
                               fit: BoxFit.cover),
                         ),
-                        SizedBox(width: 10), 
+                        SizedBox(width: 10),
                         const Text(
                           'Rockstar Games',
                           style: TextStyle(
@@ -69,8 +78,8 @@ class _enterprise_profileState extends State<enterprise_profile> {
                     const SizedBox(
                       height: 10,
                     ), //SizedBox
-                    const Text(
-                      'Rockstar Games are a game developer and publisher responsible for some of the most successful, controversial, and innovative games in the industry. They are best known for producing series like Grand Theft Auto, Midnight Club, and Max Payne and for their ground-breaking work in open world games.',
+                    Text(
+                      text,
                       style: TextStyle(
                         fontSize: 15,
                       ), //Textstyle
@@ -84,7 +93,7 @@ class _enterprise_profileState extends State<enterprise_profile> {
                         width: 100,
 
                         child: ElevatedButton(
-                          onPressed: () => 'Null',
+                          onPressed: () => {changedata(context)},
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all(Colors.amber)),
@@ -121,5 +130,51 @@ class _enterprise_profileState extends State<enterprise_profile> {
         ),
       ),
     );
+  }
+
+  changedata(
+    context
+  ) {
+    TextEditingController _textFieldController = TextEditingController();
+    var valueText = '';
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Edit description'),
+            content: TextField(
+              onChanged: (value) {
+                setState(() {
+                  valueText = value;
+                });
+              },
+              controller: _textFieldController,
+              decoration: InputDecoration(hintText: "New text"),
+            ),
+            actions: <Widget>[
+              TextButton(
+                // color: Colors.red,
+                // textColor: Colors.white,
+                child: Text('CANCEL'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+              TextButton(
+                // color: Colors.green,
+                // textColor: Colors.white,
+                child: Text('OK'),
+                onPressed: () {
+                  setState(() {
+                    text = valueText;
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ],
+          );
+        });
   }
 }

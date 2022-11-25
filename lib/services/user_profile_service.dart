@@ -52,6 +52,7 @@ class UserProfileAgentClient {
     final UserProfile userProfileFound;
     if(response.body.isNotEmpty) {
       userProfileFound =  UserProfile(
+          jsonData['applicantId'],
           jsonData['firstname'],
           jsonData['lastname'],
           jsonData['description'],
@@ -59,7 +60,7 @@ class UserProfileAgentClient {
           userTechSkills
       );
     } else {
-      userProfileFound =  UserProfile("", "", "", "", []);
+      userProfileFound =  UserProfile(0,"", "", "", "", []);
     }
     return userProfileFound;
   }
