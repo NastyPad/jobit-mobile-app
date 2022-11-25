@@ -9,7 +9,7 @@ class RecruiterService {
   static Future<List<Recruiter>> getAllRecruiters() async {
     final response =
     await http.get(Uri.parse(
-        "https://localhost:7244/api/v1/recruiter"));
+        "https://jobit-api-nastypad.azurewebsites.net/api/v1/recruiter"));
 
     if (response.statusCode == 200) {
       final responseJSON = json.decode(response.body);

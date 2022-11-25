@@ -8,7 +8,7 @@ class ApplicantService {
   static Future<List<Applicant>> getAllApplicants() async {
     final response =
     await http.get(Uri.parse(
-        "https://localhost:7244/api/v1/applicant"));
+        "https://jobit-api-nastypad.azurewebsites.net/api/v1/applicant"));
 
     if (response.statusCode == 200) {
       final responseJSON = json.decode(response.body);
@@ -22,7 +22,7 @@ class ApplicantService {
   static Future<Applicant> getAllApplicantsBYID(num) async {
     final response =
     await http.get(Uri.parse(
-        "https://localhost:7244/api/v1/applicant/"+num.toString()));
+        "https://jobit-api-nastypad.azurewebsites.net/api/v1/applicant/"+num.toString()));
 
     if (response.statusCode == 200) {
       final responseJSON = json.decode(response.body);

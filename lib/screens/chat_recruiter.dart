@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jobit_mobile_app/screens/repo_view.dart';
 
 import '../models/applicant_model.dart';
 import '../models/message_model.dart';
@@ -71,50 +72,42 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                     return SizedBox(
                         width: 100.0,
                         height: 140.0,
-                        child: ElevatedButton(
-                            style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white) ),
-                            onPressed: () async {
-                              actual=applicants[index];
-                              setState(() {actual=applicants[index];});
-                              _getData(actual.applicantId);
-                              bool status = await ChatService.getAllChatBYID(1,actual.applicantId);
+                        child: GestureDetector(
+                          onDoubleTap: () {
+                            MaterialPageRoute route = MaterialPageRoute(builder: (_) => RepoView(applicants[index].username.toString()));
+                            Navigator.push(context, route);
+                          },
+                          child: ElevatedButton(
+                              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white) ),
+                              onPressed: () async {
+                                actual=applicants[index];
+                                setState(() {actual=applicants[index];});
+                                _getData(actual.applicantId);
+                                bool status = await ChatService.getAllChatBYID(1,actual.applicantId);
 
-                              if (status) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(content: Text('yes')));
-                              }
-                              else
-                              {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(content: Text('no')));
-                                Map<String, dynamic> dataUpdate = {
-                                  "applicantId": actual.applicantId,
-                                  "recruiterId": 1
-                                };
-                                bool ss = await ChatService().postChat(dataUpdate);
-                              }
-                            },
-                            child: Container(
-                              width: 100,
-                              height: 140,
-                              padding: EdgeInsets.all(0),
-                              child:
-                              Column(
-                                  children: [
-                                    CircleAvatar(radius: 40,
-                                        backgroundImage: NetworkImage(
-                                            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
-                                    ),
-                                    SizedBox(height: 5),
-                                    Text(
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.center,
-                                        applicants[index].firstname.toString(),
-                                        style: TextStyle(color: Colors.amber,
-                                            fontWeight: FontWeight.bold,fontSize: 18))
-                                  ]
-                              ),)
+                              },
+                              child: Container(
+                                width: 100,
+                                height: 140,
+                                padding: EdgeInsets.all(0),
+                                child:
+                                Column(
+                                    children: [
+                                      CircleAvatar(radius: 40,
+                                          backgroundImage: NetworkImage(
+                                              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png')
+                                      ),
+                                      SizedBox(height: 5),
+                                      Text(
+                                          overflow: TextOverflow.ellipsis,
+                                          textAlign: TextAlign.center,
+                                          applicants[index].firstname.toString(),
+                                          style: TextStyle(color: Colors.amber,
+                                              fontWeight: FontWeight.bold,fontSize: 18))
+                                    ]
+                                ),)
 
+                          ),
                         )
                     );
                   },

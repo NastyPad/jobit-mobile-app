@@ -11,7 +11,7 @@ class ChatService {
     http.Response response = await http
         .post(
         Uri.parse(
-            "https://localhost:7244/api/v1/chat"),
+            "https://jobit-api-nastypad.azurewebsites.net/api/v1/chat"),
         body: jsonEncode(data),
         headers: {
           'Content-type': 'application/json'
@@ -28,7 +28,7 @@ class ChatService {
   static Future<bool> getAllChatBYID(recluter, applicant) async {
     final response =
     await http.get(Uri.parse(
-        "https://localhost:7244/api/v1/chat/"+recluter.toString()+"/"+applicant.toString()));
+        "https://jobit-api-nastypad.azurewebsites.net/api/v1/chat/"+recluter.toString()+"/"+applicant.toString()));
 
     if (response.statusCode == 200) {
       return true;
