@@ -1,31 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../models/applicant_model.dart';
 import '../models/message_model.dart';
-import '../services/applicant_service.dart';
+import '../models/recruiter_model.dart';
 import '../services/chat_service.dart';
 import '../services/message_service.dart';
+import '../services/recruiter_service.dart';
 
-
-class ChatRecruiter extends StatefulWidget {
+class ChatApplicant extends StatefulWidget {
   List<String> names=['Erick Cruz','Renzo García','Sandra Gomez','Alicia Torres'];
 
   @override
-  State<ChatRecruiter> createState() => _ChatRecruiterState();
+  State<ChatApplicant> createState() => _ChatApplicantState();
 }
 
-class _ChatRecruiterState extends State<ChatRecruiter> {
-  late List applicants;
+class _ChatApplicantState extends State<ChatApplicant> {
+  late List recruiters;
   TextEditingController _textocontroller = TextEditingController();
   final ScrollController _controller = ScrollController();
-  late Applicant actual;
+  late Recruiter actual;
   Future initialize() async {
-    applicants = [];
-    applicants = await ApplicantService.getAllApplicants() ;
+    recruiters = [];
+    recruiters = await RecruiterService.getAllRecruiters() ;
     setState(() {
-      applicants = applicants;
-      actual=applicants[0];
+      recruiters = recruiters;
+      actual=recruiters[0];
     });
   }
   @override
@@ -66,7 +65,7 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                 child: ListView.builder(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
-                  itemCount: applicants.length,
+                  itemCount: recruiters.length,
                   itemBuilder: (context, index) {
                     return SizedBox(
                         width: 100.0,
@@ -74,10 +73,10 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                         child: ElevatedButton(
                             style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white) ),
                             onPressed: () async {
-                              actual=applicants[index];
-                              setState(() {actual=applicants[index];});
-                              _getData(actual.applicantId);
-                              bool status = await ChatService.getAllChatBYID(1,actual.applicantId);
+                              actual=recruiters[index];
+                              setState(() {actual=recruiters[index];});
+                              _getData(actual.recruiterId);
+                              bool status = await ChatService.getAllChatBYID(actual.recruiterId,1);
 
                               if (status) {
                                 ScaffoldMessenger.of(context)
@@ -88,8 +87,8 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(content: Text('no')));
                                 Map<String, dynamic> dataUpdate = {
-                                  "applicantId": actual.applicantId,
-                                  "recruiterId": 1
+                                  "applicantId": 1,
+                                  "recruiterId": actual.recruiterId
                                 };
                                 bool ss = await ChatService().postChat(dataUpdate);
                               }
@@ -109,7 +108,7 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                                     Text(
                                         overflow: TextOverflow.ellipsis,
                                         textAlign: TextAlign.center,
-                                        applicants[index].firstname.toString(),
+                                        recruiters[index].firstname.toString(),
                                         style: TextStyle(color: Colors.amber,
                                             fontWeight: FontWeight.bold,fontSize: 18))
                                   ]
@@ -136,7 +135,7 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
             ),
             Expanded(
                 child: FutureBuilder(
-                  future: MessageService.getAllMessages(1, actual.applicantId),
+                  future: MessageService.getAllMessages(actual.recruiterId,1),
                   builder: (context, AsyncSnapshot<List> snapshot){
                     return ListView.builder(
                         controller: _controller,
@@ -147,7 +146,7 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                           var messagee = snapshot.data![position];
                           _controller.jumpTo(_controller.position.maxScrollExtent);
 
-                          if (messagee.whoSentIt == 1) {
+                          if (messagee.whoSentIt == 2) {
                             return fromMessage(messagee.messageContent.toString());
                           }else{
                             return toMessage(messagee.messageContent.toString());
@@ -174,9 +173,9 @@ class _ChatRecruiterState extends State<ChatRecruiter> {
                       //DateTime now = DateTime.now();
                       Map<String, dynamic> dataUpdate = {
                         'messageContent': _textocontroller.text,
-                        'whoSentIt': 1, // 1 = reclutador
-                        'applicantId': actual.applicantId,
-                        'recruiterId': 1 // poner id del usuario logeado
+                        'whoSentIt': 2, // 1 = reclutador
+                        'applicantId': 1, // poner id del usuario logeado
+                        'recruiterId': actual.recruiterId
                       };
                       bool status = await MessageService().postMessage(dataUpdate);
                       if (status) {
